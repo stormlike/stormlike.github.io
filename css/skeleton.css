@@ -455,7 +455,8 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 }
 
 p {
-  margin-top: 0; }
+  margin-top: 0;
+  }
   
 /* Header Style */
 .codrops-top {
@@ -697,7 +698,7 @@ p,
 ul,
 ol,
 form {
-margin-bottom: 2.5rem;
+margin-bottom: 1.2rem;
   }
 table {
 margin-bottom: 0;}
