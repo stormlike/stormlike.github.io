@@ -296,6 +296,7 @@
   .fourtrans.columns              { width: 30.6666666667%; box-shadow: 0px 0px 0px #aaaaaa;}
   .five.columns                   { width: 39.3333333333%; }
   .six.columns                    { width: 48%; background-color: #EEE; box-shadow: 0px 0px 0px #aaaaaa;}
+  .sixwhite.columns                    { width: 48%; background-color: #FFF; -webkit-box-shadow: 0 2px 5px -2px #aaaaaa; -moz-box-shadow: 0 2px 5px -2px #aaaaaa; box-shadow: 0 2px 5px -2px #aaaaaa;}
   .sixs.columns                   { width: 48%;            }
   .seven.columns                  { width: 56.6666666667%; }
   .eight.columns                  { width: 65.3333333333%; }
