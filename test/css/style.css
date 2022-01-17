@@ -727,6 +727,8 @@ margin-bottom: 0;}
   box-sizing: border-box;
   border: thin solid black;
   float: left;
+  margin-top:1rem;
+  margin-bottom:1rem;
   margin-right:1rem;  }
 
 /* Misc
@@ -790,9 +792,9 @@ there.
 .filter-cat-results .f-cat {
   opacity: 0;
   max-width: 290px;
-  height: 75px;
+/*  height: 75px; */
   float: left;
-  background-color: #f8c200;
+/*  background-color: #f8c200; */
   border: thin solid black;
   font-size: 1.3rem;
   color: #800000;
@@ -800,6 +802,7 @@ there.
   margin: 2px;
   padding: 4px;
   display: none; /* Hidden by default */
+  position: relative;
 }
 .filter-cat-results .f-cat.active {
   opacity: 1;
@@ -823,4 +826,49 @@ there.
   100% {
     opacity: 1;
   }
+}
+/* Style the button that is used to open and close the collapsible content */
+/* .collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+*/
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/*.active, .collapsible:hover {
+/*  background-color: #ccc; */
+/* } */
+/* Style the collapsible content. Note: hidden by default */
+/* .content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1; 
+} */
+
+
+.containerexp {
+    width:100%;
+/**    border:1px solid #d3d3d3; */
+}
+.containerexp div {
+    width:100%;
+}
+.containerexp .headerexp {
+/*    background-color:#d3d3d3; */
+    padding-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.containerexp .contentexp {
+    display: none;
+    padding : 5px;
+	background-color: #fff; 
+	
 }
