@@ -58,8 +58,24 @@
 <div class="container filtering">
     <div class="filter-cat row">
         <div class="col col-md-4 col-xs-6">
-            <select class="form-control cat1">
-                <option value="cat-all">All types</option>
+            <p>Filter both camera and lenses</p>
+			<select class="form-control cat3">
+                <option value="cat-all">Mount type (All)</option>
+                <option value="cat-fujigf">Fuji GF</option>
+                <option value="cat-fujix">Fuji X</option>
+                <option value="cat-ef">Canon EF</option>
+                <option value="cat-mft">Micro 4/3, MFT</option>
+                <option value="cat-m42">M42</option>
+                <option value="cat-m39">M39</option>
+            </select>
+			<select class="form-control cat5">
+                <option value="cat-all">Sealing (All)</option>
+                <option value="cat-ws">Weather sealed</option>
+                <option value="cat-ns">None</option>
+            </select>
+			<p>Filter lenses only</p>
+			<select class="form-control cat1">
+                <option value="cat-all">Lens type (All)</option>
                 <option value="cat-wide">Wide</option>
                 <option value="cat-normal">Normal</option>
                 <option value="cat-tele">Telephoto</option>
@@ -68,341 +84,391 @@
             </select>
 
             <select class="form-control cat2">
-                <option value="cat-all">Prime and zoom</option>
+                <option value="cat-all">Prime or zoom (All)</option>
                 <option value="cat-prime">Prime</option>
                 <option value="cat-zoom">Zoom</option>
             </select>
 
-            <select class="form-control cat3">
-                <option value="cat-all">All mounts</option>
-                <option value="cat-fujigf">Fuji GF</option>
-                <option value="cat-fujix">Fuji X</option>
-                <option value="cat-ef">Canon EF</option>
-                <option value="cat-mft">Micro 4/3, MFT</option>
-                <option value="cat-m42">M42</option>
-                <option value="cat-m39">M39</option>
-            </select>
-
             <select class="form-control cat4">
-                <option value="cat-all">MF and AF</option>
+                <option value="cat-all">Focusing (All)</option>
                 <option value="cat-af">Autofocus</option>
                 <option value="cat-mf">Manual focus</option>
             </select>
         </div>
     </div>
 <div class="row filter-cat-results">
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-fujigf" data-cat4="cat-af">Fujifilm Fujinon GF 45mm F/2.8 R OIS WR
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat3="cat-fujigf" data-cat5="cat-ws">Fujifilm GFX100S
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/fujigfx100s.jpg" width="100%">
         <ul>
-			<img class="u-images" src="images/fuji45_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Digital medium format</li>
+            <li>Mirrorless</li>
+            <li>102mp BSI CMOS sensor</li>
+			<li>Weather sealed</li>
+			<li>5-axis in-body image stabilization</li>
         </ul>
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-fujigf" data-cat4="cat-af">Fujifilm Fujinon GF 120mm F/4 Macro R LM OIS WR
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat3="cat-fujix" data-cat5="cat-ws">Fujifilm X-H1
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/fujifilm_x-h1.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji120_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>APS-C (1.5x crop)</li>
+            <li>24MP X-Trans APS-C sensor</li>
+            <li>Mirrorless</li>
+			<li>Weather sealed</li>
+			<li>5-axis in-body image stabilization</li>
+			<li>Vertical battery grip VPB-XH1</li>
         </ul>
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-macro" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af">Sigma 105mm F/2.8 EX DG OS HSM Macro
+	<div class="col col-md-3 col-xs-6 f-cat active" data-cat3="cat-mft" data-cat5="cat-ws">Panasonic Lumix DMC-G80
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/lumixg80.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/IMG_3408.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Micro-Four-Thirds (MFT, M4/3)</li>
+            <li>16mp Live MOS Sensor without OLPF</li>
+            <li>Mirrorless</li>
+			<li>Weather sealed</li>
+			<li>5-axis in-body image stabilization</li>
         </ul>
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-macro" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af">Sigma 150mm F/2.8 EX DG OS HSM APO Macro
+	<div class="col col-md-3 col-xs-6 f-cat active" data-cat3="cat-mft" data-cat5="cat-ns">Panasonic Lumix DMC-GX80K
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/lumixgx80.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/sigma_150mm_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Micro-Four-Thirds (MFT, M4/3)</li>
+            <li>16mp Live MOS Sensor without OLPF</li>
+            <li>Mirrorless</li>
+			<li>5-axis in-body image stabilization</li>
         </ul>
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-fisheye" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af">Sigma 8mm F/3.5 EX DG Circular fisheye
+</div>
+<div class="row filter-cat-results">
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-zoom" data-cat3="cat-fujigf" data-cat4="cat-af" data-cat5="cat-ws">Fujifilm Fujinon GF 32-64mm f/4 R LM WR
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/fuji32-64_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/sigma8mm_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>25-50mm FF equiv.</li>
+            <li>Weather resistant.</li>
+            <li>Aperture ring.</li>
         </ul>
+		<img src="images/fuji32-64_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-zoom" data-cat3="cat-mft" data-cat4="cat-af">Panasonic Leica DG Vario-Elmarit 12-60/2,8-4 ASPH Power O.I.S.
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-fujigf" data-cat4="cat-af" data-cat5="cat-ws">Fujifilm Fujinon GF 120mm F/4 Macro R LM OIS WR
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/fuji120_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/leica12-60_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Approx 95mm FF equiv.</li>
+            <li>Weather resistant.</li>
+            <li>Image Stabilization.</li>
+			<li>Aperture ring.</li>
+			<li>1:2 macro.</li>
         </ul>
+		<img src="images/fuji120_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-zoom" data-cat3="cat-mft" data-cat4="cat-af">Panasonic Lumix G Vario 35-100mm f/4-5.6 ASPH. MEGA O.I.S.
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-macro" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af" data-cat5="cat-ns">Sigma 105mm F/2.8 EX DG OS HSM Macro
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+		<img src="images/IMG_3408.jpg" width="100%"> 
         <ul>
-            <img class="u-images" src="images/lumix35-100_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Image Stabilization.</li>
+            <li>1:1 macro.</li>
+            <li>No vignetting on GFX.</li>
+			<li>2x tele converter available</li>
         </ul>
+		<img src="images/IMG_3402.jpg" width="100%"> 
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-mft" data-cat4="cat-af">Panasonic Leica DG Summilux 15mm F1.7 ASPH
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-macro" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af" data-cat5="cat-ns">Sigma 150mm F/2.8 EX DG OS HSM APO Macro
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/sigma_150mm_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/leica15_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Image Stabilization.</li>
+            <li>1:1 macro.</li>
+            <li>No vignetting on GFX.</li>
+			<li>2x tele converter available</li>
         </ul>
+            <img src="images/sigma_150mm_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-mft" data-cat4="cat-mf">Voigtländer Nokton 25mm F0.95
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-fisheye" data-cat2="cat-prime" data-cat3="cat-ef" data-cat4="cat-af" data-cat5="cat-ns">Sigma 8mm F/3.5 EX DG Circular fisheye
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/sigma8mm_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/voigtlander25_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Fish-eye.</li>
+            <li>Heavy vignetting on all sensor sizes.</li>
         </ul>
+            <img src="images/sigma8mm_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-mft" data-cat4="cat-mf">Samyang 16mm T2.2 MFT Cine
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-zoom" data-cat3="cat-mft" data-cat4="cat-af" data-cat5="cat-ws">Panasonic Leica DG Vario-Elmarit 12-60/2,8-4 ASPH Power O.I.S.
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/leica12-60_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/samyang16_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>24-120mm on FF equiv.</li>
+            <li>Image Stabilization.</li>
+            <li>Weather resistant.</li>
         </ul>
+            <img src="images/leica12-60_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-fujix" data-cat4="cat-af">Fujifilm Fujinon XF 23mm F1.4 R
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-zoom" data-cat3="cat-mft" data-cat4="cat-af" data-cat5="cat-ns">Panasonic Lumix G Vario 35-100mm f/4-5.6 ASPH. MEGA O.I.S.
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/lumix35-100_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji23_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>70-200mm on FF equiv.</li>
+            <li>Image Stabilization.</li>
+            <li>Collapsible design.</li>
         </ul>
+            <img src="images/lumix35-100_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-fujix" data-cat4="cat-af">Fujifilm Fujinon XF 35mm F1.4 R
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-mft" data-cat4="cat-mf" data-cat5="cat-ns">Voigtländer Nokton 25mm F0.95
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/voigtlander25_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji35_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>50mm on FF equiv.</li>
+            <li>No electronic coupling.</li>
+            <li>Aperture ring.</li>
         </ul>
+            <img src="images/voigtlander25_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-fujix" data-cat4="cat-af">Viltrox 56mm F1.4 XF Red
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-mft" data-cat4="cat-mf" data-cat5="cat-ns">Samyang 16mm T2.2 MFT Cine
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/samyang16_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/viltrox56_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>32mm on FF equiv.</li>
+            <li>Cine lens.</li>
+            <li>Geared focus ring.</li>
         </ul>
+            <img src="images/samyang16_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af">Fujifilm Fujinon XF 10-24mm F4 R OIS
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-prime" data-cat3="cat-fujix" data-cat4="cat-af" data-cat5="cat-ns">Fujifilm Fujinon XF 23mm F1.4 R
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/fuji23_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji10-24_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>35mm on FF equiv.</li>
+            <li>Aperture ring.</li>
+            <li>Focus clutch.</li>
         </ul>
+            <img src="images/fuji23_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af">Fujifilm Fujinon XF 16-80mm F4 R OIS WR
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-fujix" data-cat4="cat-af" data-cat5="cat-ns">Viltrox 56mm F1.4 XF Red
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/viltrox56_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji16-80_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>85mm on FF equiv.</li>
+            <li>Aperture ring.</li>
         </ul>
+            <img src="images/viltrox56_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af">Fujifilm Fujinon  XF 55-200mm F3.5-4.8 R LM OIS
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-wide" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af" data-cat5="cat-ns">Fujifilm Fujinon XF 10-24mm F4 R OIS
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/fuji10-24_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/fuji55-200_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>15-36mm on FF equiv.</li>
+            <li>Image Stabilization.</li>
+			<li>Aperture ring.</li>
         </ul>
+            <img src="images/fuji10-24_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf">Meyer-Optik Görlitz Orestor 135mm f/2.8
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af" data-cat5="cat-ws">Fujifilm Fujinon XF 16-80mm F4 R OIS WR
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/fuji16-80_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/IMG_4078.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>24-120mm on FF equiv.</li>
+            <li>Image Stabilization.</li>
+            <li>Weather resistant.</li>
+			<li>Aperture ring.</li>
         </ul>
+            <img src="images/fuji16-80_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m39" data-cat4="cat-mf">Helios 44 58mm f/2
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-zoom" data-cat3="cat-fujix" data-cat4="cat-af" data-cat5="cat-ns">Fujifilm Fujinon  XF 55-200mm F3.5-4.8 R LM OIS
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/fuji55-200_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/IMG_4158.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>82-300mm on FF equiv.</li>
+            <li>Image Stabilization.</li>
+			<li>Aperture ring.</li>
         </ul>
+            <img src="images/fuji55-200_1.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf">Helios 44M-6 58mm f/2
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf" data-cat5="cat-ns">Meyer-Optik Görlitz Orestor 135mm f/2.8
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/IMG_4078.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/helios44m6_2.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Vintage lens.</li>
+            <li>15 aperture blades.</li>
+            <li>Only soft vignette on medium format.</li>
         </ul>
+            <img src="images/IMG_4077.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m39" data-cat4="cat-mf">Helios 40 85mm f/1.5
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m39" data-cat4="cat-mf" data-cat5="cat-ns">Helios 44 58mm f/2
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/IMG_4158.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/helios40_1.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Vintage lens.</li>
+            <li>Swirly bokeh.</li>
+            <li>Soft vignette on medium format.</li>
         </ul>
+            <img src="images/IMG_4157.jpg" width="100%">
 		</div>
 		</div>
 	</div>
-    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf">Vario 400mm f/6.3
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf" data-cat5="cat-ns">Helios 44M-6 58mm f/2
 		<div class="containerexp">
 			<div class="headerexp"><span>Show more</span>
 
 			</div>
 		<div class="contentexp">
+            <img src="images/helios44m6_2.jpg" width="100%">
         <ul>
-            <img class="u-images" src="images/IMG_4205.jpg" width="100%">
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
-            <li>This is just some random content.</li>
+            <li>Vintage lens.</li>
+            <li>Swirly bokeh.</li>
+            <li>Soft vignette on medium format.</li>
         </ul>
+            <img src="images/helios44m6_1.jpg" width="100%">
+		</div>
+		</div>
+	</div>
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-normal" data-cat2="cat-prime" data-cat3="cat-m39" data-cat4="cat-mf" data-cat5="cat-ns">Helios 40 85mm f/1.5
+		<div class="containerexp">
+			<div class="headerexp"><span>Show more</span>
+
+			</div>
+		<div class="contentexp">
+            <img src="images/helios40_2.jpg" width="100%">
+        <ul>
+            <li>Vintage lens.</li>
+            <li>Broken aperture. Always wide open.</li>
+            <li>Soft vignette on medium format.</li>
+        </ul>
+            <img src="images/helios40_1.jpg" width="100%">
+		</div>
+		</div>
+	</div>
+    <div class="col col-md-3 col-xs-6 f-cat active" data-cat="cat-tele" data-cat2="cat-prime" data-cat3="cat-m42" data-cat4="cat-mf" data-cat5="cat-ns">Vario 400mm f/6.3
+		<div class="containerexp">
+			<div class="headerexp"><span>Show more</span>
+
+			</div>
+		<div class="contentexp">
+            <img src="images/IMG_4205.jpg" width="100%">
+        <ul>
+            <li>Vintage lens.</li>
+        </ul>
+            <img src="images/IMG_4203.jpg" width="100%">
 		</div>
 		</div>
 	</div>
@@ -413,6 +479,7 @@
 </div>
 <div class="row">
 	<div class="twelwhite columns">
+	<img src="meta/banner_3.png" width="100%">
 	</div>
 </div>
 <div class="row" id=footer>
