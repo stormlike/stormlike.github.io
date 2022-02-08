@@ -800,7 +800,7 @@ there.
 .filter-cat-results .f-cat {
   opacity: 0;
   width: 290px;
-  min-height: 93px;
+  min-height: 102px;
   float: left;
 /*  background-color: #f8c200; */
   border: thin solid black;
