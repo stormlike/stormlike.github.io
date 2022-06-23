@@ -228,10 +228,10 @@
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 20px; 
   box-sizing: border-box; }
 .row {
-    margin-top: 20pt;
+   margin-top: 20pt;
 }
 .column,
 .columns {
@@ -379,7 +379,7 @@ html {
 }
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
-  line-height: 1.6;
+/*  line-height: 1.6; */
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; 
@@ -456,6 +456,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 }
 
 p {
+  color: #222;
   margin-top: 0;
   }
   
@@ -742,10 +743,10 @@ margin-bottom: 0;}
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
-  margin-top: 3rem;
-  margin-bottom: 3.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid #222; }
 
 
 /* Clearing
