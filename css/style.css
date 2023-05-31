@@ -457,6 +457,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 p {
   color: #222;
+  line-height: 1.6;
   margin-top: 0;
   }
   
@@ -544,7 +545,7 @@ a:hover {
   display: none;
   position: absolute;
   background-color: #fff;
-  min-width: 160px;
+/*  min-width: 160px; */
     -webkit-box-shadow: 0 8px 16px 0px #aaaaaa;
 	   -moz-box-shadow: 0 8px 16px 0px #aaaaaa;
 	        box-shadow: 0 8px 16px 0px #aaaaaa;
@@ -582,6 +583,7 @@ input[type="password"],
 textarea,
 select {
   height: 38px;
+  color: #800000;
   padding: 2px 2px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
@@ -806,7 +808,7 @@ there.
 /*  background-color: #f8c200; */
   border: thin solid black;
   font-size: 1.3rem;
-  color: #800000;
+  color: black;
   text-align: left;
   margin: 2px;
   padding: 4px;
@@ -849,6 +851,7 @@ there.
     padding-top: 20px; 
     cursor: pointer;
     font-weight: bold;
+	color: #800000;
 /*	padding: 4px; */
 /*	position: absolute; */
 /*    bottom: 0px; */
