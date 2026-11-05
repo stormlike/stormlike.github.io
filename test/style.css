@@ -1,0 +1,302 @@
+/* ────────────────────── Palette Variables ────────────────────── */
+:root {
+    --color-primary     : #ffffff;
+    --color-secondary   : #1A1A1A;  
+    --color-accent-1    : #F39C12;
+    --color-accent-2    : #800000;
+    --bg-light          : #FFFFFF;
+    --bg-dark           : #1A1A1A;
+    --text-primary      : #2C3E50;
+    --text-primary-dk   : #F5F5F5;
+    --menu-bg-light     : #F8F9FA;
+    --menu-bg-dark      : #2D2D2D;
+}
+/* ────────────────────── Global Layout ────────────────────── */
+/* Make the wrapper a column‑flex container that stretches to fill the viewport */
+.wrapper {
+  max-width:1900px; margin:auto;
+  display:flex; flex-direction:column;
+  min-height:100vh; /* ensures footer is at bottom when content < viewport */
+}
+
+/* Main takes all remaining vertical space so the footer stays below it */
+main {
+  flex:1;
+  padding: 2rem;
+}
+
+/* ────────────────────── Global Styles ────────────────────── */
+html, body {
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  transition: background-color .3s ease, color .3s ease;
+}
+
+/* 2. HEADER & MENU BAR */
+.header {
+  background: var(--color-primary);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background .4s ease;
+}
+[data-theme="dark"] .header {
+  background:var(--color-secondary);
+}
+
+.menu-bar {
+  background: var(--menu-bg-light);
+  padding: 10px 2rem;
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the right */
+  align-items: center;
+  position: relative; /* Necessary for absolute dropdown positioning */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background .4s ease;
+}
+[data-theme="dark"] .menu-bar {
+  background:var(--menu-bg-dark);
+}
+
+/* ────────────────────── iPhone Style Toggle ────────────────────── */
+
+/* The container/track of the switch */
+.iphone-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 1rem;
+}
+
+/* Hide the actual checkbox */
+.iphone-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider (the track) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-accent-2);
+  transition: .4s;
+  border-radius: 34px; /* Makes it pill-shaped */
+}
+
+/* The knob (the white circle) */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* When checked: Change track color to iOS green */
+input:checked + .slider {
+  background-color: #d5aa00; 
+}
+
+/* When checked: Move the knob to the right */
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Optional: Focus state for accessibility */
+input:focus + .slider {
+  box-shadow: 0 0 1px #d5aa00;
+}
+
+/* 4. HAMBURGER ICON STYLES */
+.hamburger {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-left: 20px;
+    z-index: 1001; /* Sits above the dropdown */
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-secondary);
+    border-radius: 3px;
+    transition: all 0.4s ease;
+}
+
+/* Dark mode color for hamburger lines */
+body[data-theme="dark"] .hamburger span {
+    background-color: var(--color-accent-1);
+}
+
+/* Hamburger Animation to "X" */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* 5. DROPDOWN MENU STYLES */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Sits right below the menu-bar */
+    right: 20px;
+    width: 200px;
+    background-color: var(--menu-bg-light);
+    border-radius: 15px; /* Rounded for iPhone feel */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    z-index: 1000;
+    
+    /* Hidden State */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body[data-theme="dark"] .dropdown-menu {
+    background-color: var(--menu-bg-dark);
+}
+
+/* Active/Visible State */
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px) scale(1); /* Slides down and expands */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 25px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="dark"] .dropdown-menu a {
+    color: var(--text-primary-dk);
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--color-secondary);
+}
+
+/* ────────────────────── Buttons & Alerts ────────────────────── */
+.btn, button {
+  background: var(--color-accent-1);
+  border:none; color:#fff; padding:.25rem 0.5rem;
+  font-weight:bold; cursor:pointer; border-radius:.25rem;
+  transition:background .3s ease;
+}
+.btn:hover, button:hover { background:var(--color-secondary); }
+
+.alert {
+  background: var(--color-accent-2);
+  color:#fff; padding:.75rem 1.5rem;
+  margin-top:1rem; border-radius:.25rem;
+}
+
+/* ────────────────────── Gallery Grid ────────────────────── */
+.gallery {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:1rem;
+  margin-top:2rem;
+}
+.gallery img {
+  aspect-ratio:4/3; width:100%; height:auto;
+  object-fit:cover;
+
+  /* NEW – rounded corners for gallery thumbnails */
+  border-radius:6px;
+
+  transition:transform .35s ease, box-shadow .25s ease;
+  cursor:pointer;
+  box-shadow:0 4px 8px rgba(0,0,0,.15);
+}
+.gallery img:hover { transform:scale(1.04); box-shadow:0 6px 12px rgba(0,0,0,.2); }
+
+/* ────────────────────── Responsive breakpoint (≤ 600px) ────────────────────── */
+@media (max-width:600px){
+  .gallery { grid-template-columns:1fr; }
+}
+
+/* ────────────────────── Lightbox Modal ────────────────────── */
+.lightbox {
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.85);
+  display:flex; align-items:center; justify-content:center;
+  visibility:hidden; opacity:0;
+  transition:.3s ease;
+  z-index:1000;
+}
+.lightbox.active { visibility:visible; opacity:1; }
+.lightbox img {
+  max-width:90%; 
+  max-height:80vh; 
+  border-radius:6px;          /* ← NEW – rounded corners */
+  box-shadow:0 8px 16px rgba(0,0,0,.3);
+}
+.lightbox .close-btn {
+  position:absolute; top:20px; right:30px;
+  font-size:2.5rem; color:#fff; cursor:pointer;
+  z-index:1100;
+}
+
+/* ────────────────────── About Section (Lorem Ipsum) ────────────────────── */
+.about { margin-top:3rem; max-width:800px; line-height:1.6; }
+.about h2 { margin-bottom:.75rem; }
+
+/* ────────────────────── Dark‑mode override ────────────────────── */
+body[data-theme="dark"] {
+  background-color: var(--bg-dark);
+  color: var(--text-primary-dk);
+}
+
+/* Text elements – dark mode overrides */
+body[data-theme="dark"] h1,
+body[data-theme="dark"] h2,
+body[data-theme="dark"] p,
+body[data-theme="dark"] nav a {
+  color: var(--text-primary-dk);
+}
+
+/* Keep inner wrappers on the same background as body */
+body[data-theme="dark"] .wrapper,
+body[data-theme="dark"] main,
+body[data-theme="dark"] footer { background-color: inherit; }
+
+/* ────────────────────── Footer (identical to Header) ────────────────────── */
+/* ────────────────────── Footer (identical to Header) ────────────────────── */
+.footer {
+  /* Keep these static – no theme overrides will touch them */
+
+  padding: 1rem 2rem;
+  text-align: center;
+}

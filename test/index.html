@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Mobile viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Stormlike Photography</title>
+<!-- Link to external stylesheet -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <div class=header>
+        <img width="220" src="meta/stormlike_photography_logo_color.svg" alt="Stormlike Photography"/>
+    </div>
+
+    <div class="menu-bar">
+        <!-- iPhone Theme Toggle -->
+        <label class="iphone-switch">
+            <input type="checkbox" id="theme-toggle-input">
+            <span class="slider"></span>
+        </label>
+
+        <!-- Hamburger Button -->
+        <div class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- 6-Item Dropdown Menu -->
+        <nav class="dropdown-menu" id="dropdown-menu">
+            <a href="#">Home</a>
+            <a href="#">Gallery</a>
+            <a href="#">About Me</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+<main>
+  <!-- Featured Work -->
+  <section>
+    <h2>Featured Work</h2>
+    <p>A selection of photographs I taken over the last few years. Check out my Instagram and Flickr photostream for more.</p>
+  </section>
+
+  <!-- Gallery Grid – first row -->
+  <section aria-label="Image gallery">
+    <div class="gallery">
+      <img src="content/test1.jpg" alt="Landscape 1"/>
+      <img src="content/test2.jpg" alt="Portrait 1"/>
+      <img src="content/test3.jpg" alt="Urban 1"/>
+      <img src="content/test4.jpg" alt="Nature 1"/>
+      <img src="content/test5.jpg" alt="City 1"/>
+      <img src="content/test6.jpg" alt="Mountains 1"/>
+    </div>
+  </section>
+
+  <!-- Gallery Grid – second row -->
+  <section aria-label="Image gallery">
+    <div class="gallery">
+      <img src="content/test7.jpg" alt="Landscape 2"/>
+      <img src="content/test8.jpg" alt="Portrait 2"/>
+      <img src="content/test9.jpg" alt="Urban 2"/>
+      <img src="content/test10.jpg" alt="Nature 2"/>
+      <img src="content/test11.jpg" alt="City 2"/>
+      <img src="content/test12.jpg" alt="Mountains 2"/>
+    </div>
+  </section>
+
+  <!-- About / Lorem Ipsum Section -->
+  <section class="about">
+    <h2>About Me</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper orci ut lectus porta, a interdum nulla tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dignissim odio sed leo efficitur, nec placerat erat pretium.</p>
+    <p>Proin volutpat massa eu velit gravida, quis fermentum eros commodo. Maecenas id magna at urna porta interdum. Etiam eget libero ac justo blandit finibus sit amet a orci. Quisque sed sapien ut lectus dictum placerat. Duis in metus eget lorem consequat tempor vel non dolor.</p>
+    <p>Fusce euismod, massa nec convallis elementum, enim purus pulvinar ligula, at luctus mauris urna et turpis. Donec pretium sem sit amet libero dignissim, ut fermentum magna condimentum. Nulla facilisi.</p>
+  </section>
+</main>
+
+<footer class="footer" aria-label="Site footer">
+  © 2026 Stormlike Photography – All Rights Reserved.
+</footer>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" id="lb-close">×</span>
+  <img src="" alt="Full-size view" id="lb-img"/>
+</div>
+
+</div> <!-- /.wrapper -->
+
+<script>
+  // Lightbox functionality
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+  const themeToggleInput = document.getElementById('theme-toggle-input');
+
+  // 1. TOGGLE HAMBURGER & DROPDOWN
+  hamburgerBtn.addEventListener('click', () => {
+      // Toggle the "X" animation
+      hamburgerBtn.classList.toggle('active');
+      // Toggle the dropdown visibility
+      dropdownMenu.classList.toggle('show');
+  });
+
+  // Close dropdown when clicking a link
+  const menuLinks = document.querySelectorAll('.dropdown-menu a');
+  menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          hamburgerBtn.classList.remove('active');
+          dropdownMenu.classList.remove('show');
+      });
+  });
+
+  // 2. THEME TOGGLE LOGIC
+  themeToggleInput.addEventListener('change', function() {
+      if (this.checked) {
+          document.body.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+      } else {
+          document.body.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+      }
+  });
+
+  // Load saved theme
+  window.addEventListener('load', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+          themeToggleInput.checked = true;
+          document.body.setAttribute('data-theme', 'dark');
+      }
+  });
+const lightbox = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lb-img');
+const lbClose  = document.getElementById('lb-close');
+
+document.querySelectorAll('.gallery img').forEach(img => {
+  img.addEventListener('click', () => {
+    // enlarge image – replace the size part of the URL
+    lbImg.src = img.src.replace('/400/300', '/1200/900');
+    lightbox.classList.add('active');
+  });
+});
+
+lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) lightbox.classList.remove('active');
+});
+</script>
+</body>
+</html>
