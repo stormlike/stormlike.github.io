@@ -268,6 +268,7 @@ body[data-theme="dark"] .btn:hover, button:hover {
   }
 }
 
+
 /* ────────────────────── Images ────────────────────── */
 .gallery img {
   width: 100%;                    /* never exceed the grid cell */
@@ -276,6 +277,15 @@ body[data-theme="dark"] .btn:hover, button:hover {
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  cursor: pointer;
+  /* Smooth transition for hover effect */
+  transition: transform .35s ease, box-shadow .25s ease;
+}
+
+/* Hover state – zoom & deepen shadow */
+.gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
 
