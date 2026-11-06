@@ -237,30 +237,49 @@ body[data-theme="dark"] .btn:hover, button:hover {
   margin-top:1rem; border-radius:.25rem;
 }
 
-/* ────────────────────── Gallery Grid ────────────────────── */
 .gallery {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap:1rem;
+  display: grid;
+  gap: 1rem;                     /* spacing between images */
+  /* initial fallback – will be overridden by media queries */
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: stretch;         /* images stretch to fill the cell */
+  align-items: stretch;
   margin-top:2rem;
 }
+
+/* Small devices – one image per row */
+@media (max-width: 767px) {
+  .gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Medium devices – three images per row */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large devices – six images per row (default, but kept for clarity) */
+@media (min-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* ────────────────────── Images ────────────────────── */
 .gallery img {
-  aspect-ratio:4/3; width:100%; height:auto;
-  object-fit:cover;
-
-  /* NEW – rounded corners for gallery thumbnails */
-  border-radius:6px;
-
-  transition:transform .35s ease, box-shadow .25s ease;
-  cursor:pointer;
-  box-shadow:0 4px 8px rgba(0,0,0,.15);
+  width: 100%;                    /* never exceed the grid cell */
+  height: auto;
+  aspect-ratio: 4/3;              /* keeps a uniform aspect ratio */
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
 }
-.gallery img:hover { transform:scale(1.04); box-shadow:0 6px 12px rgba(0,0,0,.2); }
 
-/* ────────────────────── Responsive breakpoint (≤ 600px) ────────────────────── */
-@media (max-width:600px){
-  .gallery { grid-template-columns:1fr; }
-}
+
+
 
 /* ────────────────────── Lightbox Modal ────────────────────── */
 .lightbox {
