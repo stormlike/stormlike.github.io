@@ -328,8 +328,6 @@ body[data-theme="dark"] footer { background-color: inherit; }
 
 /* ────────────────────── Footer (identical to Header) ────────────────────── */
 .footer {
-  /* Keep these static – no theme overrides will touch them */
-
   padding: 1rem 2rem;
   text-align: center;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
