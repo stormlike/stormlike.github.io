@@ -1,86 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Mobile viewport -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <title>Stormlike Photography</title>
-<!-- Link to external stylesheet -->
 <link rel="stylesheet" href="style.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
-  <link rel="manifest" href="/meta/site.webmanifest">
-  <link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/meta/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/meta/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
+<link rel="manifest" href="/meta/site.webmanifest">
+<link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="/meta/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/meta/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
 <div class="wrapper">
-    <div class=header>
-        <img width="220" src="meta/stormlike_photography_logo_color.svg" alt="Stormlike Photography"/>
+  <div class="header">
+    <img width="220" src="meta/stormlike_photography_logo_color.svg" alt="Stormlike Photography"/>
+  </div>
+
+  <div class="menu-bar">
+    <label class="iphone-switch">
+      <input type="checkbox" id="theme-toggle-input">
+      <span class="slider"></span>
+    </label>
+
+    <div class="hamburger" id="hamburger-btn">
+      <span></span><span></span><span></span>
     </div>
 
-    <div class="menu-bar">
-        <!-- iPhone Theme Toggle -->
-        <label class="iphone-switch">
-            <input type="checkbox" id="theme-toggle-input">
-            <span class="slider"></span>
-        </label>
-
-        <!-- Hamburger Button -->
-        <div class="hamburger" id="hamburger-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <!-- 6-Item Dropdown Menu -->
-        <nav class="dropdown-menu" id="dropdown-menu">
-            <a href="#">Home</a>
-            <a href="#">Gallery</a>
-            <a href="#">About Me</a>
-            <a href="#">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Contact</a>
-        </nav>
-    </div>
+    <nav class="dropdown-menu" id="dropdown-menu">
+      <a href="#">Home</a>
+      <a href="#">Gallery</a>
+      <a href="#">About Me</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
 
 <main>
-  <!-- Featured Work -->
   <section>
     <h2>Featured Work</h2>
     <p>A selection of photographs I taken over the last few years. Check out my Instagram and Flickr photostream for more.</p>
   </section>
 
-  <!-- Gallery Grid – first row -->
+  <!-- First two gallery rows – always visible -->
   <section aria-label="Image gallery">
     <div class="gallery">
-      <img src="content/test1.jpg" alt="Landscape 1"/>
-      <img src="content/test2.jpg" alt="Portrait 1"/>
-      <img src="content/test3.jpg" alt="Urban 1"/>
-      <img src="content/test4.jpg" alt="Nature 1"/>
-      <img src="content/test5.jpg" alt="City 1"/>
-      <img src="content/test6.jpg" alt="Mountains 1"/>
+      <img src="content/sunrise.jpg" alt="Sunrise" loading="lazy"/>
+      <img src="content/autumn_frost.jpg" alt="Autumn Frost" loading="lazy"/>
+      <img src="content/winter_sun.jpg" alt="Winter Sun" loading="lazy"/>
+      <img src="content/iceland_mountain.jpg" alt="Iceland Mountain" loading="lazy"/>
+      <img src="content/thai_fishingboats.jpg" alt="Thai Fishing Boats" loading="lazy"/>
+      <img src="content/waterfall.jpg" alt="Waterfall" loading="lazy"/>
     </div>
   </section>
 
-  <!-- Gallery Grid – second row -->
   <section aria-label="Image gallery">
     <div class="gallery">
-      <img src="content/test7.jpg" alt="Landscape 2"/>
-      <img src="content/test8.jpg" alt="Portrait 2"/>
-      <img src="content/test9.jpg" alt="Urban 2"/>
-      <img src="content/test10.jpg" alt="Nature 2"/>
-      <img src="content/test11.jpg" alt="City 2"/>
-      <img src="content/test12.jpg" alt="Mountains 2"/>
+      <img src="content/iceland_cabin.jpg" alt="Iceland Cabin" loading="lazy"/>
+      <img src="content/waterfall_base.jpg" alt="Waterfall Base" loading="lazy"/>
+      <img src="content/thai_sunset.jpg" alt="Thai Sunset" loading="lazy"/>
+      <img src="content/stone_bridge.jpg" alt="Stone Bridge" loading="lazy"/>
+      <img src="content/frost_lake.jpg" alt="Frost Lake" loading="lazy"/>
+      <img src="content/rainbow.jpg" alt="Rainbow" loading="lazy"/>
     </div>
   </section>
 
-  <!-- About / Lorem Ipsum Section -->
+  <!-- Load‑button section – appears *before* About Me -->
+  <section class="gallery-load-controls">
+    <button class="btn" data-target="gallery-2" data-loaded="false">Show gallery 2</button>
+  </section>
+
+  <!-- Hidden galleries – wrapped in <template> -->
+  <template id="gallery-2">
+    <section aria-label="Image gallery" data-gallery="2">
+      <div class="gallery">
+        <img src="content/sunrays.jpg" alt="Sunrays" loading="lazy"/>
+        <img src="content/mushroom.jpg" alt="Mushrooms" loading="lazy"/>
+        <img src="content/bridge.jpg" alt="Bridge" loading="lazy"/>
+        <img src="content/aerochrome.jpg" alt="Aerochrome" loading="lazy"/>
+        <img src="content/reflection.jpg" alt="Reflection" loading="lazy"/>
+        <img src="content/bokeh.jpg" alt="Bokeh" loading="lazy"/>
+      </div>
+    </section>
+        <section aria-label="Image gallery" data-gallery="2">
+      <div class="gallery">
+        <img src="content/redkite.jpg" alt="Red Kite" loading="lazy"/>
+        <img src="content/flyingbee.jpg" alt="Flying Bee" loading="lazy"/>
+        <img src="content/dandelion.jpg" alt="Dandelion" loading="lazy"/>
+        <img src="content/beech.jpg" alt="Beech" loading="lazy"/>
+        <img src="content/road.jpg" alt="Road" loading="lazy"/>
+        <img src="content/lion_tamarins.jpg" alt="Lion Tamarins" loading="lazy"/>
+      </div>
+    </section>
+  </template>
+
+  <!-- About section -->
   <section class="about">
     <h2>About Me</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper orci ut lectus porta, a interdum nulla tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dignissim odio sed leo efficitur, nec placerat erat pretium.</p>
@@ -98,67 +118,100 @@
   <span class="close-btn" id="lb-close">×</span>
   <img src="" alt="Full-size view" id="lb-img"/>
 </div>
-
 </div> <!-- /.wrapper -->
 
 <script>
-  // Lightbox functionality
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const dropdownMenu = document.getElementById('dropdown-menu');
-  const themeToggleInput = document.getElementById('theme-toggle-input');
+/* -------- UI Toggle (hamburger, theme) -------- */
+const hamburgerBtn   = document.getElementById('hamburger-btn');
+const dropdownMenu   = document.getElementById('dropdown-menu');
+const themeToggleIn = document.getElementById('theme-toggle-input');
 
-  // 1. TOGGLE HAMBURGER & DROPDOWN
-  hamburgerBtn.addEventListener('click', () => {
-      // Toggle the "X" animation
-      hamburgerBtn.classList.toggle('active');
-      // Toggle the dropdown visibility
-      dropdownMenu.classList.toggle('show');
-  });
+hamburgerBtn.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('active');
+  dropdownMenu.classList.toggle('show');
+});
 
-  // Close dropdown when clicking a link
-  const menuLinks = document.querySelectorAll('.dropdown-menu a');
-  menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-          hamburgerBtn.classList.remove('active');
-          dropdownMenu.classList.remove('show');
-      });
+document.querySelectorAll('.dropdown-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburgerBtn.classList.remove('active');
+    dropdownMenu.classList.remove('show');
   });
+});
 
-  // 2. THEME TOGGLE LOGIC
-  themeToggleInput.addEventListener('change', function() {
-      if (this.checked) {
-          document.body.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-      } else {
-          document.body.removeAttribute('data-theme');
-          localStorage.setItem('theme', 'light');
-      }
-  });
+themeToggleIn.addEventListener('change', function() {
+  if (this.checked) {
+    document.body.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.body.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  }
+});
 
-  // Load saved theme
-  window.addEventListener('load', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-          themeToggleInput.checked = true;
-          document.body.setAttribute('data-theme', 'dark');
-      }
-  });
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    themeToggleIn.checked = true;
+    document.body.setAttribute('data-theme', 'dark');
+  }
+});
+
+/* -------- Lightbox (delegated) -------- */
 const lightbox = document.getElementById('lightbox');
 const lbImg    = document.getElementById('lb-img');
 const lbClose  = document.getElementById('lb-close');
 
-document.querySelectorAll('.gallery img').forEach(img => {
-  img.addEventListener('click', () => {
-    // enlarge image – replace the size part of the URL
-    lbImg.src = img.src.replace('/400/300', '/1200/900');
-    lightbox.classList.add('active');
-  });
+document.addEventListener('click', e => {
+  const img = e.target.closest('.gallery img');
+  if (!img) return;
+  lbImg.src = img.src.replace(/\/\d+\/\d+/, '/1200/900');
+  lightbox.classList.add('active');
 });
 
 lbClose.addEventListener('click', () => lightbox.classList.remove('active'));
 lightbox.addEventListener('click', e => {
   if (e.target === lightbox) lightbox.classList.remove('active');
 });
+
+/* -------- Lazy‑loaded galleries -------- */
+function cloneTemplate(tmplId) {
+  const tmpl = document.getElementById(tmplId);
+  if (!tmpl) return null;
+  return tmpl.content.cloneNode(true);
+}
+
+function toggleGallery(btn) {
+  const tmplId   = btn.dataset.target;
+  const loaded   = btn.dataset.loaded === 'true';
+  const galleryNo = tmplId.replace('gallery-','');
+
+  if (loaded) {
+    // Remove *all* instances of this gallery
+    document.querySelectorAll(`[data-gallery="${galleryNo}"]`).forEach(el => el.remove());
+    btn.textContent = `Show gallery ${galleryNo}`;
+    btn.dataset.loaded = 'false';
+  } else {
+    const fragment = cloneTemplate(tmplId);
+    if (!fragment) return;
+
+    // Insert before the About section
+    const about = document.querySelector('.about');
+    if (about) about.parentNode.insertBefore(fragment, about);
+    else document.querySelector('main').appendChild(fragment);
+
+    // Scroll to the newly inserted gallery
+    const inserted = document.querySelector(`[data-gallery="${galleryNo}"]`);
+    if (inserted) inserted.scrollIntoView({behavior:'smooth', block:'start'});
+
+    btn.textContent = `Hide gallery ${galleryNo}`;
+    btn.dataset.loaded = 'true';
+  }
+}
+
+// Attach click handlers to the two load‑button controls
+document.querySelectorAll('.gallery-load-controls button').forEach(btn =>
+  btn.addEventListener('click', () => toggleGallery(btn))
+);
 </script>
 </body>
 </html>

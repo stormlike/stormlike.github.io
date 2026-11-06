@@ -32,6 +32,10 @@ html, body {
   background-color: var(--bg-light);
   color: var(--text-primary);
   transition: background-color .3s ease, color .3s ease;
+    /* The scrollbar will always take up space, so no layout shift when content grows */
+  overflow-y: scroll;          /* ← always reserve space for the scrollbar */
+  -ms-overflow-style: scrollbar; /* IE/Edge fallback – keep the width consistent */
+  scrollbar-width: thin;       /* Firefox – keeps the width predictable */
 }
 
 /* 2. HEADER & MENU BAR */
@@ -209,12 +213,23 @@ body[data-theme="dark"] .dropdown-menu a {
 
 /* ────────────────────── Buttons & Alerts ────────────────────── */
 .btn, button {
-  background: var(--color-accent-1);
-  border:none; color:#fff; padding:.25rem 0.5rem;
-  font-weight:bold; cursor:pointer; border-radius:.25rem;
+  background: var(--color-accent-2);
+  border:none; color:#fff; padding:.5rem 0.5rem;
+  font-weight:bold; cursor:pointer; border-radius:6px;
   transition:background .3s ease;
+  margin-top:2rem;
 }
-.btn:hover, button:hover { background:var(--color-secondary); }
+.btn:hover, button:hover {
+  background:var(--color-accent-1);
+}
+
+body[data-theme="dark"] .btn, button {
+    background-color: var(--color-accent-1);
+}
+
+body[data-theme="dark"] .btn:hover, button:hover {
+    background-color: var(--color-accent-2);
+}
 
 .alert {
   background: var(--color-accent-2);
