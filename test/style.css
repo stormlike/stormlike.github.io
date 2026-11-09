@@ -236,7 +236,7 @@ body[data-theme="dark"] .btn:hover, button:hover {
   color:#fff; padding:.75rem 1.5rem;
   margin-top:1rem; border-radius:.25rem;
 }
-
+/* ────────────────────── Gallery Styles  ────────────────────── */
 .gallery {
   display: grid;
   gap: 1rem;                     /* spacing between images */
@@ -268,8 +268,6 @@ body[data-theme="dark"] .btn:hover, button:hover {
   }
 }
 
-
-/* ────────────────────── Images ────────────────────── */
 .gallery img {
   width: 100%;                    /* never exceed the grid cell */
   height: auto;
@@ -288,7 +286,43 @@ body[data-theme="dark"] .btn:hover, button:hover {
   box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
+  /* ────── Card Grid container ────── */
+  .cards-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;          /* 1 column on mobile */
+  }
+  @media (min-width: 768px) {            /* Desktop breakpoint */
+    .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  }
 
+  /* ────── Card component ────── */
+  .card {
+    background: var(--color-bg-dark);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  }
+  .card__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;              /* keeps a uniform aspect ratio */
+    display: block; 
+    cursor: pointer;
+  }
+  .card__content { padding: 1rem; color: var(--color-secondary);}
+  .card__title {
+    margin: 0 0 0.5rem 0;
+    color: var(--color-accent-2);
+    transition: color 0.25s ease;
+  }
+  .card:hover .card__title { color: var(--color-accent-1); }
+  .card__text { margin: 0; line-height: 1.4; color: var(--text-primary); }
 
 
 /* ────────────────────── Lightbox Modal ────────────────────── */
@@ -314,7 +348,11 @@ body[data-theme="dark"] .btn:hover, button:hover {
 }
 
 /* ────────────────────── About Section (Lorem Ipsum) ────────────────────── */
-.about { margin-top:3rem; max-width:800px; line-height:1.6; }
+.about {
+  margin-top:3rem;
+  margin-bottom:3rem;
+  max-width:800px;
+  line-height:1.6; }
 .about h2 { margin-bottom:.75rem; }
 
 /* ────────────────────── Dark‑mode override ────────────────────── */
@@ -338,6 +376,7 @@ body[data-theme="dark"] footer { background-color: inherit; }
 
 /* ────────────────────── Footer (identical to Header) ────────────────────── */
 .footer {
+  margin-top:1rem;
   padding: 1rem 2rem;
   text-align: center;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);

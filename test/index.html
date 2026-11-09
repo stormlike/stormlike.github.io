@@ -88,7 +88,7 @@
         <img src="content/bokeh.jpg" alt="Bokeh" loading="lazy"/>
       </div>
     </section>
-        <section aria-label="Image gallery" data-gallery="2">
+    <section aria-label="Image gallery" data-gallery="2">
       <div class="gallery">
         <img src="content/redkite.jpg" alt="Red Kite" loading="lazy"/>
         <img src="content/flyingbee.jpg" alt="Flying Bee" loading="lazy"/>
@@ -107,6 +107,36 @@
     <p>Proin volutpat massa eu velit gravida, quis fermentum eros commodo. Maecenas id magna at urna porta interdum. Etiam eget libero ac justo blandit finibus sit amet a orci. Quisque sed sapien ut lectus dictum placerat. Duis in metus eget lorem consequat tempor vel non dolor.</p>
     <p>Fusce euismod, massa nec convallis elementum, enim purus pulvinar ligula, at luctus mauris urna et turpis. Donec pretium sem sit amet libero dignissim, ut fermentum magna condimentum. Nulla facilisi.</p>
   </section>
+
+  <!-- Card section -->
+  <section class="cards-grid" aria-label="Featured cards">
+    <!-- Card 1 -->
+    <article class="card">
+      <img src="content/rainbow.jpg" alt="Rainbow" class="card__img">
+      <div class="card__content">
+        <h2 class="card__title">Rainbow warrior</h2>
+        <p class="card__text">Once in a lifetime shot of a boat at end the end of a rainbow. Shot with a Panasonic GH5</p>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card">
+      <img src="content/autumn_frost.jpg" alt="Autumn Frost" class="card__img">
+      <div class="card__content">
+        <h2 class="card__title">Frosty Autumn</h2>
+        <p class="card__text">The sun warms up the frozen grass making parts green where other parts are still crispy frosted.</p>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="card">
+      <img src="content/mushroom.jpg" alt="Mushrooms" class="card__img">
+      <div class="card__content">
+        <h2 class="card__title">Ultra-Wide Angle Mushrooms</h2>
+        <p class="card__text">Getting really close to a bunch of mushrooms with an ultra-wide angle lens.</p>
+      </div>
+    </article>
+  </section>
 </main>
 
 <footer class="footer" aria-label="Site footer">
@@ -116,7 +146,7 @@
 <!-- Lightbox Modal -->
 <div class="lightbox" id="lightbox">
   <span class="close-btn" id="lb-close">×</span>
-  <img src="" alt="Full-size view" id="lb-img"/>
+  <img src="" alt="Full‑size view" id="lb-img"/>
 </div>
 </div> <!-- /.wrapper -->
 
@@ -161,10 +191,16 @@ const lightbox = document.getElementById('lightbox');
 const lbImg    = document.getElementById('lb-img');
 const lbClose  = document.getElementById('lb-close');
 
+/*  Updated: now also listens to .card__img  */
 document.addEventListener('click', e => {
-  const img = e.target.closest('.gallery img');
+  // Grab either a gallery image or a card image
+  const img = e.target.closest('.gallery img, .card__img');
   if (!img) return;
-  lbImg.src = img.src.replace(/\/\d+\/\d+/, '/1200/900');
+
+  // For gallery images we previously replaced the size – keep that logic
+  // but for card images just use the same src
+  const highResSrc = img.dataset.largeSrc || img.src;
+  lbImg.src = highResSrc.replace(/\/\d+\/\d+/, '/1200/900'); // keeps existing behaviour
   lightbox.classList.add('active');
 });
 
