@@ -66,6 +66,18 @@ html, body {
   background:var(--menu-bg-dark);
 }
 
+a {
+  color: #800000;
+  text-decoration: none;
+}
+a:hover {
+  color: #800000;
+  text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
+}
+[data-theme="dark"] a {
+  color: var(--color-accent-1);
+}
+
 /* ────────────────────── iPhone Style Toggle ────────────────────── */
 
 /* The container/track of the switch */
@@ -196,18 +208,18 @@ body[data-theme="dark"] .dropdown-menu {
 .dropdown-menu a {
     display: block;
     padding: 12px 25px;
-    color: var(--text-primary);
+    color: var(--color-accent-2);
     text-decoration: none;
     font-size: 0.95rem;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
 body[data-theme="dark"] .dropdown-menu a {
-    color: var(--text-primary-dk);
+    color: var(--color-accent-1);
 }
 
 .dropdown-menu a:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.15);
     color: var(--color-secondary);
 }
 
@@ -239,7 +251,7 @@ body[data-theme="dark"] .btn:hover, button:hover {
 /* ────────────────────── Gallery Styles  ────────────────────── */
 .gallery {
   display: grid;
-  gap: 1rem;                     /* spacing between images */
+  gap: 1.5rem;                     /* spacing between images */
   /* initial fallback – will be overridden by media queries */
   grid-template-columns: repeat(6, 1fr);
   justify-items: stretch;         /* images stretch to fill the cell */
@@ -311,7 +323,7 @@ body[data-theme="dark"] .btn:hover, button:hover {
   .card__img {
     width: 100%;
     height: auto;
-    aspect-ratio: 16/9;              /* keeps a uniform aspect ratio */
+    aspect-ratio: 4/3;              /* keeps a uniform aspect ratio */
     display: block; 
     cursor: pointer;
   }
@@ -349,11 +361,14 @@ body[data-theme="dark"] .btn:hover, button:hover {
 
 /* ────────────────────── About Section (Lorem Ipsum) ────────────────────── */
 .about {
-  margin-top:3rem;
+  margin-top:2.25rem;
   margin-bottom:3rem;
   max-width:800px;
   line-height:1.6; }
-.about h2 { margin-bottom:.75rem; }
+.about h2 {
+  margin-top:.75rem;
+  margin-bottom:.75rem;
+}
 
 /* ────────────────────── Dark‑mode override ────────────────────── */
 body[data-theme="dark"] {

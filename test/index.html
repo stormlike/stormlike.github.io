@@ -14,6 +14,8 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="msapplication-config" content="/meta/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
+<meta name="description" content="photography">
+<meta property="og:image" content="https://stormlike.com/meta/stormlike_thumb_1024.jpg" />
 </head>
 
 <body>
@@ -34,18 +36,18 @@
 
     <nav class="dropdown-menu" id="dropdown-menu">
       <a href="#">Home</a>
-      <a href="#">Gallery</a>
-      <a href="#">About Me</a>
-      <a href="#">Services</a>
-      <a href="#">Portfolio</a>
-      <a href="#">Contact</a>
+      <a href="#about">About Me</a>
+      <a href="https://www.flickr.com/photos/189175432@N05/">Flickr</a>
+      <a href="https://notes.stormlike.com">Notes</a>
+      <a href="https://www.instagram.com/stormlex.stormlike/">Instagram</a>
+      <a href="mailto:contact@stormlike.com">Contact</a>
     </nav>
   </div>
 
 <main>
   <section>
     <h2>Featured Work</h2>
-    <p>A selection of photographs I taken over the last few years. Check out my Instagram and Flickr photostream for more.</p>
+    <p>A selection of photographs I taken over the last few years. Check out my <a href="https://www.instagram.com/stormlex.stormlike/" target="_new">Instagram</a> and <a href="https://www.flickr.com/photos/189175432@N05/" target="_new">Flickr photostream</a> for more.</p>
   </section>
 
   <!-- First two gallery rows – always visible -->
@@ -101,7 +103,7 @@
   </template>
 
   <!-- About section -->
-  <section class="about">
+  <section class="about" id="about">
     <h2>About Me</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper orci ut lectus porta, a interdum nulla tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dignissim odio sed leo efficitur, nec placerat erat pretium.</p>
     <p>Proin volutpat massa eu velit gravida, quis fermentum eros commodo. Maecenas id magna at urna porta interdum. Etiam eget libero ac justo blandit finibus sit amet a orci. Quisque sed sapien ut lectus dictum placerat. Duis in metus eget lorem consequat tempor vel non dolor.</p>
@@ -112,28 +114,28 @@
   <section class="cards-grid" aria-label="Featured cards">
     <!-- Card 1 -->
     <article class="card">
-      <img src="content/rainbow.jpg" alt="Rainbow" class="card__img">
+      <img src="content/sunset.jpg" alt="Sunset" class="card__img" loading="lazy">
       <div class="card__content">
-        <h2 class="card__title">Rainbow warrior</h2>
-        <p class="card__text">Once in a lifetime shot of a boat at end the end of a rainbow. Shot with a Panasonic GH5</p>
+        <h2 class="card__title">Sunset Field</h2>
+        <p class="card__text">Sunset with dramatic clouds shot with a medium format Fuji GFX 100s at 100mm f/22.</p>
       </div>
     </article>
 
     <!-- Card 2 -->
     <article class="card">
-      <img src="content/autumn_frost.jpg" alt="Autumn Frost" class="card__img">
+      <img src="content/tulip.jpg" alt="Tulip Macro" class="card__img" loading="lazy">
       <div class="card__content">
-        <h2 class="card__title">Frosty Autumn</h2>
-        <p class="card__text">The sun warms up the frozen grass making parts green where other parts are still crispy frosted.</p>
+        <h2 class="card__title">Tulip Macro</h2>
+        <p class="card__text">Close-up shot of a tulip with a Sony A7C Mark II and the Sigma 105mm f/2.8 Macro lens.</p>
       </div>
     </article>
 
     <!-- Card 3 -->
     <article class="card">
-      <img src="content/mushroom.jpg" alt="Mushrooms" class="card__img">
+      <img src="content/blackbird.jpg" alt="Blackbird" class="card__img" loading="lazy">
       <div class="card__content">
-        <h2 class="card__title">Ultra-Wide Angle Mushrooms</h2>
-        <p class="card__text">Getting really close to a bunch of mushrooms with an ultra-wide angle lens.</p>
+        <h2 class="card__title">Late Autumn Blackbird</h2>
+        <p class="card__text">Blackbird in late autumn shot with OM-1 and the 300mm f/4 at 1/250s and f/4.</p>
       </div>
     </article>
   </section>
