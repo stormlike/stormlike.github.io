@@ -2,7 +2,7 @@
 :root {
     --color-primary     : #ffffff;
     --color-secondary   : #1A1A1A;  
-    --color-accent-1    : #F39C12;
+    --color-accent-1    : #f39c12;
     --color-accent-2    : #800000;
     --bg-light          : #FFFFFF;
     --bg-dark           : #1A1A1A;
@@ -98,36 +98,35 @@ a:hover {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background:var(--color-accent-2);
+  background: var(--color-accent-2);
   transition: .4s;
   border-radius: 34px;
 }
 
-/*  ── 2. Icon added to the slider with a pseudo‑element  ── */
+/*  ── 2. SVG knob – use background‑image instead of content  ── */
 .slider::before {
-  content: '☀️';        /* light‑mode icon – default */
+  content: "";                            /* no text */
   position: absolute;
   width: 22px;
   height: 22px;
   top: 2px;
-  left: 2px;
-  background: var(--color-primary);
+  left: 2px;                               /* knob starts on the left */
+  background: url('meta/light-theme.svg') center/contain no-repeat;
+  background-color: var(--color-primary);   /* fallback if the SVG fails */
   border-radius: 50%;
-  text-align: center;
-  line-height: 22px;   /* vertically centre the emoji */
-  transition: all .4s;
+  transition: left .4s, background .4s;
 }
 
-/*  ── 3. Switch to moon when the checkbox is checked  ── */
+/*  ── 3. Dark‑mode state – change icon and position  ── */
 #theme-toggle-input:checked + .slider::before {
-  content: '🌙';
-  left: calc(100% - 24px);   /* move the knob to the right */
-  background:var(--menu-bg-dark);
+  left: calc(100% - 24px);                 /* move knob to the right */
+  background: url('meta/dark-theme.svg') center/contain no-repeat;
+  background-color: var(--menu-bg-dark);    /* fallback if the SVG fails */
 }
 
 /*  ── 4. Optional: colour changes for the track  ── */
 #theme-toggle-input:checked + .slider {
-  background:var(--color-accent-1);
+  background: var(--color-accent-1);
 }
 
 /* ────────────────────── HAMBURGER ICON STYLES ────────────────────── */
