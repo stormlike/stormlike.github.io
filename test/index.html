@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <title>Stormlike Photography</title>
-<link rel="stylesheet" href="style_v2.css">
+<link rel="stylesheet" href="style_v3.css">
 <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png">
@@ -73,11 +73,6 @@
     </div>
   </section>
 
-  <!-- Load‑button section – appears *before* About Me -->
-  <section class="gallery-load-controls">
-    <button class="btn" data-target="gallery-2" data-loaded="false">Show gallery 2</button>
-  </section>
-
   <!-- Hidden galleries – wrapped in <template> -->
   <template id="gallery-2">
     <section aria-label="Image gallery" data-gallery="2">
@@ -101,13 +96,21 @@
       </div>
     </section>
   </template>
+  
+  <section class="more" id="more">
+  <!-- Load‑button section – appears *before* About Me -->
+  <section class="gallery-load-controls">
+  <!-- Replace the <button> with a clickable <span> -->
+  <span class="gallery-toggle" data-target="gallery-2" data-loaded="false">More</span>
+  </section>
+  </section>
 
   <!-- About section -->
   <section class="about" id="about">
     <h2>About Me</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ullamcorper orci ut lectus porta, a interdum nulla tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dignissim odio sed leo efficitur, nec placerat erat pretium.</p>
-    <p>Proin volutpat massa eu velit gravida, quis fermentum eros commodo. Maecenas id magna at urna porta interdum. Etiam eget libero ac justo blandit finibus sit amet a orci. Quisque sed sapien ut lectus dictum placerat. Duis in metus eget lorem consequat tempor vel non dolor.</p>
-    <p>Fusce euismod, massa nec convallis elementum, enim purus pulvinar ligula, at luctus mauris urna et turpis. Donec pretium sem sit amet libero dignissim, ut fermentum magna condimentum. Nulla facilisi.</p>
+    <p>My name is Alex and I am a passionate amateur photographer based in southern Sweden. I specialize in landscape and wildlife photography, capturing the beauty of nature in all its forms. I might have a weak spot for waterfalls, clouds and mountains, althought there's not much of those around here.</p>
+    <p>Currrent equipment includes a Sony A7R IV and a variety of lenses for different shooting scenarios. But I also have a Fuji GFX 100s with a wide-angle lens for those situations where I need to capture the grandeur of the landscape.</p>
+    <p>As with many other photographers, I tend to have too much equipment such as backpacks, tripods, filters, since a lot of gear makes better photos, ...right?.</p>
   </section>
 
   <!-- Card section -->
@@ -218,37 +221,34 @@ function cloneTemplate(tmplId) {
   return tmpl.content.cloneNode(true);
 }
 
-function toggleGallery(btn) {
-  const tmplId   = btn.dataset.target;
-  const loaded   = btn.dataset.loaded === 'true';
+function toggleGallery(triggerEl) {           // <-- renamed parameter for clarity
+  const tmplId   = triggerEl.dataset.target;
+  const loaded   = triggerEl.dataset.loaded === 'true';
   const galleryNo = tmplId.replace('gallery-','');
 
   if (loaded) {
-    // Remove *all* instances of this gallery
     document.querySelectorAll(`[data-gallery="${galleryNo}"]`).forEach(el => el.remove());
-    btn.textContent = `Show gallery ${galleryNo}`;
-    btn.dataset.loaded = 'false';
+    triggerEl.textContent = 'More';
+    triggerEl.dataset.loaded = 'false';
   } else {
     const fragment = cloneTemplate(tmplId);
     if (!fragment) return;
 
-    // Insert before the About section
-    const about = document.querySelector('.about');
-    if (about) about.parentNode.insertBefore(fragment, about);
+    const more = document.querySelector('.more');
+    if (more) more.parentNode.insertBefore(fragment, more);
     else document.querySelector('main').appendChild(fragment);
 
-    // Scroll to the newly inserted gallery
     const inserted = document.querySelector(`[data-gallery="${galleryNo}"]`);
     if (inserted) inserted.scrollIntoView({behavior:'smooth', block:'start'});
 
-    btn.textContent = `Hide gallery ${galleryNo}`;
-    btn.dataset.loaded = 'true';
+    triggerEl.textContent = 'Less';
+    triggerEl.dataset.loaded = 'true';
   }
 }
 
-// Attach click handlers to the two load‑button controls
-document.querySelectorAll('.gallery-load-controls button').forEach(btn =>
-  btn.addEventListener('click', () => toggleGallery(btn))
+/* Attach click handlers to the new text‑link control */
+document.querySelectorAll('.gallery-load-controls .gallery-toggle').forEach(el =>
+  el.addEventListener('click', () => toggleGallery(el))
 );
 </script>
 </body>

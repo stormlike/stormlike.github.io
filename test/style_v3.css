@@ -215,25 +215,43 @@ body[data-theme="dark"] .dropdown-menu a {
     color: var(--color-secondary);
 }
 
-/* ────────────────────── Buttons & Alerts ────────────────────── */
-.btn, button {
-  background: var(--color-accent-2);
-  border:none; color:#fff; padding:.5rem 0.5rem;
-  font-weight:bold; cursor:pointer; border-radius:6px;
-  transition:background .3s ease;
-  margin-top:2rem;
-}
-.btn:hover, button:hover {
-  background:var(--color-accent-1);
+/* ────────────────────── Text‑link controls ────────────────────── */
+.gallery-load-controls {
+  display: flex;            /* flex container – centre the child */
+  align-items: center;      /* vertical centering (keeps the line level) */
+  justify-content: center;  /* centre the link horizontally */
+  margin-top: 0.75rem;      /* keep existing spacing */
+  position: relative;       /* required for ::before/::after positioning */
 }
 
-body[data-theme="dark"] .btn, button {
-    background-color: var(--color-accent-1);
+/* Thin line on each side of the link */
+.gallery-load-controls::before,
+.gallery-load-controls::after {
+  content: "";
+  flex: 1;                  /* take up all the remaining space */
+  height: 1px;              /* thin line */
+  background: currentColor;  /* same colour as the link (auto‑dark‑mode) */
+  margin: 0 0.5rem;         /* small gap between line and link */
 }
 
-body[data-theme="dark"] .btn:hover, button:hover {
-    background-color: var(--color-accent-2);
+.gallery-toggle {
+  color: var(--color-accent-2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color .3s ease;
+  display: inline-block;    /* keeps spacing predictable */
 }
+
+.gallery-toggle:hover {
+  color: #800000; /* explicit hover colour */
+  text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
+}
+
+/* Dark‑mode tweaks – line colour follows the link colour */
+body[data-theme="dark"] .gallery-toggle {
+  color: var(--color-accent-1);
+}
+
 
 .alert {
   background: var(--color-accent-2);
@@ -351,7 +369,16 @@ body[data-theme="dark"] .btn:hover, button:hover {
   z-index:1100;
 }
 
-/* ────────────────────── About Section (Lorem Ipsum) ────────────────────── */
+/* ────────────────────── More Section  ────────────────────── */
+.more {
+  margin-bottom:1.5rem;
+  line-height:1.6; }
+.more h2 {
+  margin-top:.75rem;
+  margin-bottom:.75rem;
+}
+
+/* ────────────────────── About Me Section  ────────────────────── */
 .about {
   margin-top:2.25rem;
   margin-bottom:3rem;
@@ -360,6 +387,31 @@ body[data-theme="dark"] .btn:hover, button:hover {
 .about h2 {
   margin-top:.75rem;
   margin-bottom:.75rem;
+}
+
+/* ────────────────────── Drop‑cap for About Me ────────────────────── */
+.about p:first-of-type::first-letter {
+  /* Float so the rest of the text wraps around it */
+  float: left;
+
+  /* Size – 4‑5 rem gives a nice dramatic effect */
+  font-size: 5rem;
+
+  /* Extra line‑height so the letter is vertically centered */
+  line-height: 0.8;
+
+  /* Space between the drop‑cap and the following text */
+  margin-right: 0.1em;
+
+  /* Optional: add a subtle shadow for depth */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Optional: adjust on smaller screens */
+@media (max-width: 600px) {
+  .about p:first-of-type::first-letter {
+    font-size: 3.5rem;   /* scale down for mobile */
+  }
 }
 
 /* ────────────────────── Dark‑mode override ────────────────────── */
