@@ -80,65 +80,58 @@ a:hover {
 
 /* ────────────────────── iPhone Style Toggle ────────────────────── */
 
-/* The container/track of the switch */
+/*  ── 1. Base slider styles (your existing ones)  ── */
 .iphone-switch {
   position: relative;
   display: inline-block;
-  width: 50px;
+  width: 48px;          /* adjust as needed */
   height: 26px;
-  margin-left: 1rem;
 }
 
-/* Hide the actual checkbox */
-.iphone-switch input {
-  opacity: 0;
-  width: 0;
+.iphone-switch input { 
+  opacity: 0; 
+  width: 0; 
   height: 0;
 }
 
-/* The slider (the track) */
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-accent-2);
+  inset: 0;
+  background:var(--color-accent-2);
   transition: .4s;
-  border-radius: 34px; /* Makes it pill-shaped */
+  border-radius: 34px;
 }
 
-/* The knob (the white circle) */
-.slider:before {
+/*  ── 2. Icon added to the slider with a pseudo‑element  ── */
+.slider::before {
+  content: '☀️';        /* light‑mode icon – default */
   position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 2px;
+  background: var(--color-primary);
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 22px;   /* vertically centre the emoji */
+  transition: all .4s;
 }
 
-/* When checked: Change track color to iOS green */
-input:checked + .slider {
-  background-color: #d5aa00; 
+/*  ── 3. Switch to moon when the checkbox is checked  ── */
+#theme-toggle-input:checked + .slider::before {
+  content: '🌙';
+  left: calc(100% - 24px);   /* move the knob to the right */
+  background:var(--menu-bg-dark);
 }
 
-/* When checked: Move the knob to the right */
-input:checked + .slider:before {
-  transform: translateX(24px);
+/*  ── 4. Optional: colour changes for the track  ── */
+#theme-toggle-input:checked + .slider {
+  background:var(--color-accent-1);
 }
 
-/* Optional: Focus state for accessibility */
-input:focus + .slider {
-  box-shadow: 0 0 1px #d5aa00;
-}
+/* ────────────────────── HAMBURGER ICON STYLES ────────────────────── */
 
-/* 4. HAMBURGER ICON STYLES */
 .hamburger {
     width: 30px;
     height: 20px;
@@ -175,7 +168,7 @@ body[data-theme="dark"] .hamburger span {
     transform: translateY(-8.5px) rotate(-45deg);
 }
 
-/* 5. DROPDOWN MENU STYLES */
+/*  DROPDOWN MENU STYLES */
 .dropdown-menu {
     position: absolute;
     top: 100%; /* Sits right below the menu-bar */
