@@ -101,7 +101,7 @@
   <!-- Load‑button section – appears *before* About Me -->
   <section class="gallery-load-controls">
   <!-- Replace the <button> with a clickable <span> -->
-  <span class="gallery-toggle" data-target="gallery-2" data-loaded="false">More</span>
+  <span class="gallery-toggle" data-target="gallery-2" data-loaded="false">Expand</span>
   </section>
   </section>
 
@@ -145,7 +145,7 @@
 </main>
 
 <footer class="footer" aria-label="Site footer">
-  © 2026 Stormlike Photography - All Rights Reserved.<a href="#"><img height="25" src="meta/stormlike_cloud_only.svg" alt="Stormlike Photography"/></a>
+<a href="#"><img height="25" src="meta/stormlike_cloud_only.svg" alt="Stormlike Photography"/></a>  © 2026 Stormlike Photography - All Rights Reserved.
 </footer>
 
 <!-- Lightbox Modal -->
@@ -201,11 +201,8 @@ document.addEventListener('click', e => {
   // Grab either a gallery image or a card image
   const img = e.target.closest('.gallery img, .card__img');
   if (!img) return;
-
-  // For gallery images we previously replaced the size – keep that logic
-  // but for card images just use the same src
   const highResSrc = img.dataset.largeSrc || img.src;
-  lbImg.src = highResSrc.replace(/\/\d+\/\d+/, '/1200/900'); // keeps existing behaviour
+  lbImg.src = highResSrc.replace(/\/\d+\/\d+/, '/1200/900');
   lightbox.classList.add('active');
 });
 
@@ -221,14 +218,14 @@ function cloneTemplate(tmplId) {
   return tmpl.content.cloneNode(true);
 }
 
-function toggleGallery(triggerEl) {           // <-- renamed parameter for clarity
+function toggleGallery(triggerEl) {
   const tmplId   = triggerEl.dataset.target;
   const loaded   = triggerEl.dataset.loaded === 'true';
   const galleryNo = tmplId.replace('gallery-','');
 
   if (loaded) {
     document.querySelectorAll(`[data-gallery="${galleryNo}"]`).forEach(el => el.remove());
-    triggerEl.textContent = 'More';
+    triggerEl.textContent = 'Expand';
     triggerEl.dataset.loaded = 'false';
   } else {
     const fragment = cloneTemplate(tmplId);
