@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Morgan — Developer Portfolio</title>
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES (Design Tokens)
+       ============================================ */
+    :root {
+      /* Colors */
+      --clr-primary: #2563eb;
+      --clr-primary-dark: #1d4ed8;
+      --clr-primary-light: #dbeafe;
+      --clr-accent: #f59e0b;
+      --clr-text: #1e293b;
+      --clr-text-muted: #64748b;
+      --clr-bg: #ffffff;
+      --clr-bg-alt: #f8fafc;
+      --clr-border: #e2e8f0;
+      --clr-dark-bg: #0f172a;
+      --clr-white: #ffffff;
+
+      /* Typography */
+      --ff-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --ff-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --fs-hero: clamp(2.5rem, 6vw, 4.5rem);
+      --fs-h1: clamp(2rem, 4vw, 3rem);
+      --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
+      --fs-body: 1.0625rem;
+      --fs-small: 0.9375rem;
+
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Layout */
+      --max-width: 75rem;
+      --nav-height: 4rem;
+      --radius-sm: 0.5rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-full: 9999px;
+
+      /* Transitions */
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 400ms ease;
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--ff-body);
+      font-size: var(--fs-body);
+      line-height: 1.7;
+      color: var(--clr-text);
+      background-color: var(--clr-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ============================================
+       UTILITY CLASSES
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-inline: auto;
+      padding-inline: var(--space-lg);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ============================================
+       NAVIGATION BAR
+       ============================================ */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height);
+    }
+
+    .nav__logo {
+      font-family: var(--ff-heading);
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--clr-text);
+    }
+
+    .nav__logo span {
+      color: var(--clr-primary);
+    }
+
+    /* Desktop Nav Links */
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .nav__link {
+      font-size: var(--fs-small);
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-sm);
+      transition: color var(--transition-fast), background-color var(--transition-fast);
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      color: var(--clr-primary);
+      background-color: var(--clr-primary-light);
+    }
+
+    .nav__cta {
+      margin-left: var(--space-sm);
+      padding: 0.6rem 1.5rem;
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--clr-white);
+      background-color: var(--clr-primary);
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav__cta:hover {
+      background-color: var(--clr-primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger Button (Mobile) */
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav__toggle-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--clr-text);
+      border-radius: 9999px;
+      transition: transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      padding-top: calc(var(--nav-height) + var(--space-3xl));
+      padding-bottom: var(--space-3xl);
+      background: linear-gradient(
+        170deg,
+        var(--clr-bg) 0%,
+        var(--clr-primary-light) 50%,
+        var(--clr-bg) 100%
+      );
+    }
+
+    .hero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-xl);
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 1rem;
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--clr-primary);
+      background-color: var(--clr-primary-light);
+      border-radius: var(--radius-full);
+    }
+
+    .hero__badge::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--clr-accent);
+      border-radius: 50%;
+    }
+
+    .hero__title {
+      font-family: var(--ff-heading);
+      font-size: var(--fs-hero);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--clr-text);
+    }
+
+    .hero__title-accent {
+      background: linear-gradient(135deg, var(--clr-primary), #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1.0625rem, 2vw, 1.25rem);
+      color: var(--clr-text-muted);
+      max-width: 38rem;
+      line-height: 1.7;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      justify-content: center;
+    }
+
+    /* Primary Button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      font-size: var(--fs-body);
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-base), background-color var(--transition-fast);
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn--primary {
+      color: var(--clr-white);
+      background-color: var(--clr-primary);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn--primary:hover {
+      background-color: var(--clr-primary-dark);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+
+    /* Secondary / Outline Button */
+    .btn--outline {
+      color: var(--clr-text);
+      background-color: transparent;
+      border: 2px solid var(--clr-border);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+      box-shadow: none;
+    }
+
+    /* Hero Stats */
+    .hero__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xl) var(--space-2xl);
+      padding-top: var(--space-xl);
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .stat__number {
+      font-family: var(--ff-heading);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--clr-text);
+      letter-spacing: -0.03em;
+    }
+
+    .stat__label {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+    }
+
+    /* ============================================
+       SERVICES SECTION
+       ============================================ */
+    .services {
+      padding-block: var(--space-3xl);
+      background-color: var(--clr-bg-alt);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .section-header__label {
+      display: inline-block;
+      font-size: var(--fs-small);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-header__title {
+      font-family: var(--ff-heading);
+      font-size: var(--fs-h2);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--clr-text);
+    }
+
+    .section-header__desc {
+      margin-top: var(--space-sm);
+      max-width: 36rem;
+      margin-inline: auto;
+      color: var(--clr-text-muted);
+    }
+
+    /* Three-Column Grid */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .service-card {
+      background-color: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      border-color: var(--clr-primary);
+    }
+
+    .service-card__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      margin-bottom: var(--space-lg);
+      font-size: 1.75rem;
+      background-color: var(--clr-primary-light);
+      border-radius: var(--radius-sm);
+    }
+
+    .service-card__title {
+      font-family: var(--ff-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .service-card__desc {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ============================================
+       PROJECTS SECTION (NEW)
+       ============================================ */
+    .projects {
+      padding-block: var(--space-3xl);
+      background-color: var(--clr-bg);
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .project-card {
+      background-color: var(--clr-white);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      border-color: var(--clr-primary);
+    }
+
+    /* Image Placeholder Area */
+    .project-card__image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative Gradients for Placeholders */
+    .project-card__image--1 {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    }
+    .project-card__image--2 {
+      background: linear-gradient(135deg, #f0fdf4 0%, #bbf7d0 100%);
+    }
+    .project-card__image--3 {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    }
+
+    /* Mock UI Elements inside Image */
+    .project-card__mockup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      width: 80%;
+      height: 70%;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .project-card__content {
+      padding: var(--space-lg);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card__meta {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+      margin-bottom: var(--space-xs);
+    }
+
+    .project-card__title {
+      font-family: var(--ff-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--clr-text);
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-card__desc {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+      line-height: 1.65;
+      margin-bottom: auto; /* Pushes link to bottom */
+    }
+
+    .project-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin-top: var(--space-md);
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--clr-primary);
+      transition: gap var(--transition-fast);
+    }
+
+    .project-card__link:hover {
+      gap: 0.5rem;
+    }
+
+    /* ============================================
+       CONTACT / FOOTER SECTION
+       ============================================ */
+    .footer {
+      background-color: var(--clr-dark-bg);
+      color: var(--clr-white);
+    }
+
+    .footer__main {
+      padding-block: var(--space-3xl);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .footer-brand__name {
+      font-family: var(--ff-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-brand__name span {
+      color: var(--clr-primary);
+    }
+
+    .footer-brand__desc {
+      font-size: var(--fs-small);
+      color: #94a3b8;
+      max-width: 20rem;
+      line-height: 1.7;
+    }
+
+    .footer-heading {
+      font-family: var(--ff-heading);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #cbd5e1;
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .footer__link {
+      font-size: var(--fs-small);
+      color: #94a3b8;
+      transition: color var(--transition-fast), padding-inline-start var(--transition-fast);
+    }
+
+    .footer__link:hover {
+      color: var(--clr-white);
+      padding-inline-start: 0.25rem;
+    }
+
+    /* Social Icons */
+    .footer__socials {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .footer__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: var(--radius-sm);
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      font-size: 1rem;
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+
+    .footer__social-link:hover {
+      background-color: var(--clr-primary);
+      color: var(--clr-white);
+    }
+
+    /* Footer Bottom Bar */
+    .footer__bottom {
+      padding-block: var(--space-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer__copyright {
+      text-align: center;
+      font-size: var(--fs-small);
+      color: #64748b;
+    }
+
+    /* ============================================
+       RESPONSIVE — TABLET (max-width: 768px)
+       ============================================ */
+    @media (max-width: 768px) {
+      .nav__toggle {
+        display: flex;
+      }
+
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-md);
+        background-color: var(--clr-white);
+        transform: translateX(100%);
+        transition: transform var(--transition-slow);
+      }
+
+      .nav__menu--open {
+        transform: translateX(0);
+      }
+
+      .nav__cta {
+        margin-left: 0;
+      }
+
+      .services__grid,
+      .projects__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE — MOBILE (max-width: 480px)
+       ============================================ */
+    @media (max-width: 480px) {
+      :root {
+        --space-3xl: 4rem;
+        --space-2xl: 2.5rem;
+      }
+
+      .services__grid,
+      .projects__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__stats {
+        justify-content: center;
+        gap: var(--space-lg) var(--space-xl);
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-brand__desc {
+        margin-inline: auto;
+      }
+
+      .footer__socials {
+        justify-content: center;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 20rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* ============================================
+       ANIMATIONS & ACCESSIBILITY
+       ============================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================
+       NAVIGATION BAR
+       ============================ -->
+  <header class="site-header" role="banner">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#" class="nav__logo">alex<span>.</span>morgan</a>
+
+      <button
+        class="nav__toggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); this.closest('.nav__menu').classList.toggle('nav__menu--open')"
+      >
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" role="list">
+        <li><a href="#hero" class="nav__link nav__link--active">Home</a></li>
+        <li><a href="#services" class="nav__link">Services</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#contact" class="nav__cta">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="hero">
+    <!-- ============================
+         HERO SECTION
+         ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <span class="hero__badge">Available for freelance work</span>
+
+        <h1 id="hero-title" class="hero__title">
+          I build things<br>
+          for the <span class="hero__title-accent">modern web</span>
+        </h1>
+
+        <p class="hero__subtitle">
+          Full-stack developer specializing in clean code, performant interfaces,
+          and delightful user experiences. Let's turn your ideas into reality.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#services" class="btn btn--primary">
+            View My Work
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn btn--outline">
+            Get in Touch
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <p class="stat__number">5+</p>
+            <p class="stat__label">Years Experience</p>
+          </div>
+          <div class="stat">
+            <p class="stat__number">50+</p>
+            <p class="stat__label">Projects Delivered</p>
+          </div>
+          <div class="stat">
+            <p class="stat__number">30+</p>
+            <p class="stat__label">Happy Clients</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         SERVICES SECTION
+         ============================ -->
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__label">What I Do</span>
+          <h2 id="services-title" class="section-header__title">Services &amp; Expertise</h2>
+          <p class="section-header__desc">
+            From concept to deployment, I deliver end-to-end solutions
+            tailored to your unique needs.
+          </p>
+        </div>
+
+        <div class="services__grid">
+          <!-- Card 1 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">⚡</div>
+            <h3 class="service-card__title">Frontend Development</h3>
+            <p class="service-card__desc">
+              Responsive, accessible interfaces built with modern HTML, CSS, and
+              JavaScript. Pixel-perfect designs that work flawlessly across all devices.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🔧</div>
+            <h3 class="service-card__title">Backend Development</h3>
+            <p class="service-card__desc">
+              Robust server-side solutions with Node.js, Python, and RESTful APIs.
+              Scalable architectures that grow with your business.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🎨</div>
+            <h3 class="service-card__title">UI/UX Design</h3>
+            <p class="service-card__desc">
+              User-centered design that balances aesthetics with usability.
+              Wireframes, prototypes, and polished interfaces your users will love.
+            </p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">📱</div>
+            <h3 class="service-card__title">Mobile Development</h3>
+            <p class="service-card__desc">
+              Cross-platform mobile applications using React Native and Flutter.
+              Native performance with a single codebase.
+            </p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">☁️</div>
+            <h3 class="service-card__title">Cloud &amp; DevOps</h3>
+            <p class="service-card__desc">
+              Cloud infrastructure on AWS and GCP. CI/CD pipelines, containerization,
+              and automated deployments for reliable releases.
+            </p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🔒</div>
+            <h3 class="service-card__title">Performance &amp; SEO</h3>
+            <p class="service-card__desc">
+              Speed optimization, Core Web Vitals improvements, and search engine
+              strategies to maximize your online visibility.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         PROJECTS SECTION (NEW)
+         ============================ -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__label">Portfolio</span>
+          <h2 id="projects-title" class="section-header__title">Featured Projects</h2>
+          <p class="section-header__desc">
+            A selection of recent work including web applications, e-commerce platforms, and design systems.
+          </p>
+        </div>
+
+        <div class="projects__grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-card__image project-card__image--1">
+              <div class="project-card__mockup"></div>
+            </div>
+            <div class="project-card__content">
+              <p class="project-card__meta">E-Commerce • React • Node.js</p>
+              <h3 class="project-card__title">ShopFlow Dashboard</h3>
+              <p class="project-card__desc">
+                A comprehensive analytics dashboard for online retailers to track sales, inventory, and customer behavior in real-time.
+              </p>
+              <a href="#" class="project-card__link">View Project &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-card__image project-card__image--2">
+              <div class="project-card__mockup"></div>
+            </div>
+            <div class="project-card__content">
+              <p class="project-card__meta">SaaS • Vue.js • Firebase</p>
+              <h3 class="project-card__title">TaskMaster Pro</h3>
+              <p class="project-card__desc">
+                A collaborative project management tool featuring real-time updates, drag-and-drop kanban boards, and team chat.
+              </p>
+              <a href="#" class="project-card__link">View Project &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-card__image project-card__image--3">
+              <div class="project-card__mockup"></div>
+            </div>
+            <div class="project-card__content">
+              <p class="project-card__meta">Finance • TypeScript • AWS</p>
+              <h3 class="project-card__title">FinTrack Mobile App</h3>
+              <p class="project-card__desc">
+                A personal finance tracker that visualizes spending habits, manages budgets, and integrates with bank APIs securely.
+              </p>
+              <a href="#" class="project-card__link">View Project &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================
+       CONTACT / FOOTER
+       ============================ -->
+  <footer class="footer" id="contact" role="contentinfo">
+    <div class="footer__main container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <p class="footer-brand__name">alex<span>.</span>morgan</p>
+          <p class="footer-brand__desc">
+            A passionate developer crafting modern web experiences.
+            Based in San Francisco, working worldwide.
+          </p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="GitHub">GH</a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">IN</a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+            <a href="#" class="footer__social-link" aria-label="Email">@</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="#hero" class="footer__link">Home</a></li>
+            <li><a href="#services" class="footer__link">Services</a></li>
+            <li><a href="#projects" class="footer__link">Projects</a></li>
+            <li><a href="#about" class="footer__link">About</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <ul class="footer__links" role="list">
+            <li><a href="mailto:hello@alexmorgan.dev" class="footer__link">hello@alexmorgan.dev</a></li>
+            <li><span class="footer__link">San Francisco, CA</span></li>
+            <li><a href="#" class="footer__link">Schedule a Call</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; 2025 Alex Morgan. All rights reserved. Built with semantic HTML &amp; pure CSS.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

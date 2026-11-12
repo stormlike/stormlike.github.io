@@ -71,7 +71,7 @@ html, body {
 
 [data-theme="dark"] .menu-bar {
   background:var(--menu-bg-dark);
-  box-shadow: 0 5px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px rgba(255, 255, 255, 0.1),0 5px rgba(255, 255, 255, 0.1);
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 }
 
@@ -467,24 +467,55 @@ body[data-theme="dark"] footer { background-color: inherit; }
 
 /* ────────────────────── Footer (identical to Header) ────────────────────── */
 .footer {
-  margin-top:1rem;
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center; /* Vertically centers the text */
-  justify-content: center; /* Optional: Horizontally centers the text */
+  margin-top: 1rem;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
   gap: 1rem;
-  background-image: url('meta/mountains.svg');
-  background-position: right -3.2rem bottom;
-  background-repeat: no-repeat;
-  background-size: auto 60px;
+  
+  /* Change display to grid */
+  display: grid;
+  /* 3 columns: 60px ends, and the center takes up all remaining space */
+  grid-template-columns: 60px 1fr 60px; 
 }
-[data-theme="dark"] .footer {
-  background:var(--menu-bg-dark);
-  box-shadow: 0 -5px rgba(255, 255, 255, 0.1);
-  background-image: url('meta/firs.svg');
-  background-position: right -3.2rem bottom;
+
+/* Base styles for the side sections */
+.footer-left,
+.footer-right {
+  height: 55px; /* Matches your background size height */
   background-repeat: no-repeat;
-  background-size: auto 60px;
+  background-size: auto 55px;
+}
+
+/* Assign the specific SVG backgrounds and positions */
+.footer-left {
+  background-image: url('meta/firs.svg'); /* Replace with your left SVG if different */
+  background-position: left -3.2rem bottom -5px;
+}
+
+.footer-right {
+  background-image: url('meta/firs.svg');
+  background-position: right -3.2rem bottom -5px;
+}
+
+/* Center section for your main text/content */
+.footer-main {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark Theme Adjustments */
+[data-theme="dark"] .footer {
+  background: var(--menu-bg-dark);
+  box-shadow: 0 -5px rgba(255, 255, 255, 0.1);
+}
+
+/* If the SVGs need to change or reload in dark mode, do it here */
+[data-theme="dark"] .footer-left {
+  background-image: url('meta/firs.svg');
+}
+
+[data-theme="dark"] .footer-right {
+  background-image: url('meta/firs.svg');
 }
