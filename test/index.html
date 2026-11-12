@@ -19,11 +19,7 @@
 </head>
 
 <body>
-<div class="wrapper">
-  <div class="header">
-    <img width="195" src="meta/stormlike_logo_color.svg" alt="Stormlike Photography"/>
-  </div>
-
+<div class="container-menu-bar">
   <div class="menu-bar">
     <label class="iphone-switch">
       <input type="checkbox" id="theme-toggle-input">
@@ -43,13 +39,25 @@
       <a href="mailto:contact@stormlike.com">Contact</a>
     </nav>
   </div>
-
+  </div>
 <main>
+    <!-- ════════════════════════════════════════════
+       HERO SECTION — Full-viewport background image
+       ════════════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-label="Hero introduction">
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">Capturing Nature's<br>Moments</h1>
+      <p class="hero__subtitle">Amateur landscape photographer based in Sweden.</p>
+      <a href="#featured" class="hero__cta">Explore My Work</a>
+    </div>
+  </section>
   <section class="featured" id="featured">
     <h2>Featured Work</h2>
     <p>A selection of photographs I taken over the last few years. Check out my <a href="https://www.instagram.com/stormlex.stormlike/" target="_new">Instagram</a> and <a href="https://www.flickr.com/photos/189175432@N05/" target="_new">Flickr photostream</a> for more.</p>
   </section>
-
+<div class="container-light">
   <!-- First two gallery rows – always visible -->
   <section aria-label="Image gallery">
     <div class="gallery">
@@ -104,15 +112,17 @@
   <span class="gallery-toggle" data-target="gallery-2" data-loaded="false">Expand</span>
   </section>
   </section>
-
+</div>
   <!-- About section -->
+  <div class="about-wrapper" id="about-wrapper">
   <section class="about" id="about">
     <h2>About Me</h2>
     <p>My name is Alex and I am a passionate amateur photographer based in southern Sweden. I specialize in landscape and wildlife photography, capturing the beauty of nature in all its forms. I might have a weak spot for waterfalls, clouds and mountains, althought there's not much of those around here.</p>
     <p>Currrent equipment includes a Sony A7R IV and a variety of lenses for different shooting scenarios. But I also have a Fuji GFX 100s with a wide-angle lens for those situations where I need to capture the grandeur of the landscape.</p>
     <p>As with many other photographers, I tend to have too much equipment such as backpacks, tripods, filters, since a lot of gear makes better photos, ...right?.</p>
   </section>
-
+  </div> 
+<div class="container-light">
   <!-- Card section -->
   <section class="cards-grid" aria-label="Featured cards">
     <!-- Card 1 -->
@@ -142,6 +152,7 @@
       </div>
     </article>
   </section>
+</div>
 </main>
 
 
@@ -158,7 +169,6 @@
   <span class="close-btn" id="lb-close">×</span>
   <img src="" alt="Full‑size view" id="lb-img"/>
 </div>
-</div> <!-- /.wrapper -->
 
 <script>
 /* -------- UI Toggle (hamburger, theme) -------- */

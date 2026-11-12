@@ -2,98 +2,95 @@
 :root {
     --color-primary     : #ffffff;
     --color-secondary   : #1A1A1A;  
-    --color-accent-1    : #7A9F70;
-    --color-accent-2    : #4B6F4B;
+    --color-accent-1    : #9ca3af;
+    --color-accent-2    : #334155;
     --bg-light          : #FFFFFF;
-    --bg-dark           : #1A1A1A;
-    --text-primary      : #2C3E50;
-    --text-primary-dk   : #f5f5f5;
+    --bg-dark           : #0f172a;
+    --text-primary      : #1a1a1a;
+    --text-primary-dk   : #f1f5f9;
     --menu-bg-light     : #F8F9FA;
-    --menu-bg-dark      : #2D3A34;
-    --heading-dark      : #F5F5F5;
-}
-/* ────────────────────── Global Layout ────────────────────── */
-/* Make the wrapper a column‑flex container that stretches to fill the viewport */
-.wrapper {
-  max-width:1900px; margin:auto;
-  display:flex; flex-direction:column;
-  min-height:100vh; /* ensures footer is at bottom when content < viewport */
+    --menu-bg-dark      : #1e293b;
+    --heading-light     : #f1f5f9;
+    --heading-dark      : #0f172a;
+    --links             : #475569;
+    --links-dark        : #abafb6;
+  /* Layout Widths */
+    --max-width: 106.25rem; /* ~1700px */
 }
 
-/* Main takes all remaining vertical space so the footer stays below it */
+/* ────────────────────── Global Layout ────────────────────── */
+
 main {
-  flex:1;
-  padding: 2rem;
+  flex: 1;
+  position: relative;
 }
 
 /* ────────────────────── Global Styles ────────────────────── */
 html, body {
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-primary);
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  overflow-x: hidden; /* Prevents horizontal scrollbar from full-bleed margins */
+}
+.container-light {
+    background-color: var(--menu-bg-light);
+    transition: background-color 0.3s ease;
+      padding: 3rem;
+}
+[data-theme="dark"] .container-light {
+  background: var(--menu-bg-dark);
+  transition: background-color 0.2s ease-out;
+}
+.container-2 {
+    background-color: var(--bg-light);
+    transition: background-color 0.3s ease;
+      padding: 2rem;
+}
+.container-menu-bar {
+    background-color: var(--menu-bg-light);
+    transition: background-color 0.2s ease;
+      margin-inline: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+[data-theme="dark"] .container-menu-bar {
+  background: var(--menu-bg-dark);
+  transition: background-color 0.2s ease-out;
 }
 
-/* 2. HEADER & MENU BAR */
-.header {
-  /* your original styles … */
-  background: var(--color-primary);
-  padding: 1rem 2rem .5rem 2rem;
-/*  box-shadow: 0 2px 5px rgba(0,0,0,.1); */
-  box-shadow: 0 2px 1px rgba(0,0,0,.1), 0 2px 5px rgba(0, 0, 0, .1);
-  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-  background-image: url('meta/mountains.svg');
-  background-position: right 1rem bottom;
-  background-repeat: no-repeat;
-  background-size: auto 60px;
+html {
+  scroll-behavior: smooth;
 }
 
-[data-theme="dark"] .header {
-  background: var(--color-secondary);
-  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-  background-image: url('meta/firs.svg');
-  background-position: right 1rem bottom;
-  background-repeat: no-repeat;
-  background-size: auto 60px;
-}
+/* ────────────────────── MENU BAR (Sticky + Full-Bleed) ────────────────────── */
 
 .menu-bar {
   background: var(--menu-bg-light);
-  padding: 10px 2rem;
+  padding: 1.4rem 2rem;
   display: flex;
-  justify-content: flex-end; /* Aligns items to the right */
+  justify-content: flex-end;
   align-items: center;
-  position: relative; /* Necessary for absolute dropdown positioning */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  position: relative;
+  transition: background-color 0.2s ease-out;
+  max-width: var(--max-width);
+
 }
 
 [data-theme="dark"] .menu-bar {
-  background:var(--menu-bg-dark);
-  box-shadow: 0 -5px rgba(255, 255, 255, 0.1),0 5px rgba(255, 255, 255, 0.1);
-  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-}
-
-a {
-  color: var(--color-accent-2);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--color-accent-2);
-  text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
-}
-[data-theme="dark"] a {
-  color: var(--color-accent-1);
+  background: var(--menu-bg-dark);
+  transition: background-color 0.2s ease-out;
 }
 
 /* ────────────────────── iPhone Style Toggle ────────────────────── */
-
-/*  ── 1. Base slider styles (your existing ones)  ── */
 .iphone-switch {
   position: relative;
   display: inline-block;
-  width: 48px;          /* adjust as needed */
+  width: 48px;
   height: 26px;
 }
 
@@ -112,34 +109,28 @@ a:hover {
   border-radius: 34px;
 }
 
-/*  ── 2. SVG knob – use background‑image instead of content  ── */
 .slider::before {
-  content: "";                            /* no text */
+  content: "";
   position: absolute;
   width: 22px;
   height: 22px;
   top: 2px;
-  left: 2px;                               /* knob starts on the left */
-  background: url('meta/light-theme.svg') center/contain no-repeat;
-  background-color: var(--color-primary);   /* fallback if the SVG fails */
+  left: 2px;
+  background-color: var(--color-primary);
   border-radius: 50%;
   transition: left .4s, background .4s;
 }
 
-/*  ── 3. Dark‑mode state – change icon and position  ── */
 #theme-toggle-input:checked + .slider::before {
-  left: calc(100% - 24px);                 /* move knob to the right */
-  background: url('meta/dark-theme.svg') center/contain no-repeat;
-  background-color: var(--menu-bg-dark);    /* fallback if the SVG fails */
+  left: calc(100% - 24px);
+  background-color: var(--menu-bg-dark);
 }
 
-/*  ── 4. Optional: colour changes for the track  ── */
 #theme-toggle-input:checked + .slider {
   background: var(--color-accent-1);
 }
 
 /* ────────────────────── HAMBURGER ICON STYLES ────────────────────── */
-
 .hamburger {
     width: 30px;
     height: 20px;
@@ -148,7 +139,7 @@ a:hover {
     justify-content: space-between;
     cursor: pointer;
     margin-left: 20px;
-    z-index: 1001; /* Sits above the dropdown */
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -160,12 +151,10 @@ a:hover {
     transition: all 0.4s ease;
 }
 
-/* Dark mode color for hamburger lines */
 body[data-theme="dark"] .hamburger span {
     background-color: var(--color-accent-1);
 }
 
-/* Hamburger Animation to "X" */
 .hamburger.active span:nth-child(1) {
     transform: translateY(8.5px) rotate(45deg);
 }
@@ -176,19 +165,18 @@ body[data-theme="dark"] .hamburger span {
     transform: translateY(-8.5px) rotate(-45deg);
 }
 
-/*  DROPDOWN MENU STYLES */
+/* ────────────────────── DROPDOWN MENU STYLES ────────────────────── */
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Sits right below the menu-bar */
+    top: 100%;
     right: 20px;
     width: 200px;
     background-color: var(--menu-bg-light);
-    border-radius: 15px; /* Rounded for iPhone feel */
+    border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     padding: 10px 0;
     z-index: 1000;
     
-    /* Hidden State */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px) scale(0.95);
@@ -199,11 +187,10 @@ body[data-theme="dark"] .dropdown-menu {
     background-color: var(--menu-bg-dark);
 }
 
-/* Active/Visible State */
 .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(10px) scale(1); /* Slides down and expands */
+    transform: translateY(10px) scale(1);
 }
 
 .dropdown-menu a {
@@ -223,38 +210,137 @@ body[data-theme="dark"] .dropdown-menu a {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-/* ────────────────────── Featured Work Section  ────────────────────── */
+/* ────────────────────── LINKS & GLOBAL TEXT ────────────────────── */
+a {
+  color: var(--links);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--links);
+  text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
+}
+[data-theme="dark"] a {
+  color: var(--links-dark);
+}
+
+/* ────────────────────── HERO SECTION (Full-Bleed Fix) ────────────────────── */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 85vh;
+  min-height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url('content/rainbow.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #1a2a1a;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .hero__title {
+  color: var(--heading-dark);
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+  [data-theme="dark"] .hero__subtitle {
+  color: var(--color-accent-2);
+}
+
+.hero__cta {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero__cta:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.hero__cta:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  .hero { min-height: 80vh; }
+  .hero__content { padding: 1.5rem; }
+  .hero__subtitle { margin-bottom: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .hero { min-height: 70vh; }
+  .hero__cta { padding: 0.75rem 2rem; font-size: 0.9rem; }
+}
+
+/* ────────────────────── FEATURED WORK SECTION ────────────────────── */
 .featured {
-  line-height:1.6;
+  line-height: 1.6;
+  max-width: var(--max-width);
+  margin-inline: auto;
 }
 
 .featured h2 {
-  color: var(--text-primary);
-  margin-top:.75rem;
-  margin-bottom:.75rem;
+  color: var(--heading-dark);
+  margin-top: .75rem;
+  margin-bottom: .75rem;
 }
 
-[data-theme="dark"] .featured h2{
-  color:var(--heading-dark);
+[data-theme="dark"] .featured h2 {
+  color: var(--heading-light);
 }
 
-/* ────────────────────── Text‑link controls ────────────────────── */
+/* ────────────────────── TEXT-LINK CONTROLS ────────────────────── */
 .gallery-load-controls {
-  display: flex;            /* flex container – centre the child */
-  align-items: center;      /* vertical centering (keeps the line level) */
-  justify-content: center;  /* centre the link horizontally */
-  margin-top: 0.75rem;      /* keep existing spacing */
-  position: relative;       /* required for ::before/::after positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative;
 }
 
-/* Thin line on each side of the link */
 .gallery-load-controls::before,
 .gallery-load-controls::after {
   content: "";
-  flex: 1;                  /* take up all the remaining space */
-  height: 1px;              /* thin line */
-  background: currentColor;  /* same colour as the link (auto‑dark‑mode) */
-  margin: 0 0.5rem;         /* small gap between line and link */
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  margin: 0 0.5rem;
 }
 
 .gallery-toggle {
@@ -262,7 +348,7 @@ body[data-theme="dark"] .dropdown-menu a {
   cursor: pointer;
   text-decoration: none;
   transition: color .3s ease;
-  display: inline-block;    /* keeps spacing predictable */
+  display: inline-block;
 }
 
 .gallery-toggle:hover {
@@ -270,234 +356,250 @@ body[data-theme="dark"] .dropdown-menu a {
   text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
 }
 
-/* Dark‑mode tweaks – line colour follows the link colour */
 body[data-theme="dark"] .gallery-toggle {
   color: var(--color-accent-1);
 }
 
-
 .alert {
   background: var(--color-accent-2);
-  color:#fff; padding:.75rem 1.5rem;
-  margin-top:1rem; border-radius:.25rem;
+  color: #fff; 
+  padding: .75rem 1.5rem;
+  margin-top: 1rem; 
+  border-radius: .25rem;
 }
 
-/* ────────────────────── Gallery Styles  ────────────────────── */
+/* ────────────────────── GALLERY STYLES ────────────────────── */
 .gallery {
+  max-width: var(--max-width);
+  margin-inline: auto;
   display: grid;
-  gap: 1.5rem;                     /* spacing between images */
-  /* initial fallback – will be overridden by media queries */
+  gap: 1.5rem;
   grid-template-columns: repeat(6, 1fr);
-  justify-items: stretch;         /* images stretch to fill the cell */
+  justify-items: stretch;
   align-items: stretch;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 
-/* Small devices – one image per row */
 @media (max-width: 767px) {
-  .gallery {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(1, 1fr); }
 }
 
-/* Medium devices – three images per row */
 @media (min-width: 768px) and (max-width: 1199px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Large devices – six images per row (default, but kept for clarity) */
 @media (min-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(6, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(6, 1fr); }
 }
 
 .gallery img {
-  width: 100%;                    /* never exceed the grid cell */
+  width: 100%;
   height: auto;
-  aspect-ratio: 4/3;              /* keeps a uniform aspect ratio */
+  aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0,0,0,.15);
   cursor: pointer;
-  /* Smooth transition for hover effect */
   transition: transform .35s ease, box-shadow .25s ease;
 }
 
-/* Hover state – zoom & deepen shadow */
 .gallery img:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 12px rgba(0,0,0,.2);
 }
 
-  /* ────── Card Grid container ────── */
-  .cards-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 1fr;          /* 1 column on mobile */
-  }
-  @media (min-width: 768px) {            /* Desktop breakpoint */
-    .cards-grid { grid-template-columns: repeat(3, 1fr); }
-  }
+/* ────────────────────── CARD GRID & COMPONENTS ────────────────────── */
+.cards-grid {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
 
-  /* ────── Card component ────── */
-  .card {
-    background: var(--color-bg-dark);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-  }
-  .card__img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4/3;              /* keeps a uniform aspect ratio */
-    display: block; 
-    cursor: pointer;
-  }
-  .card__content {
-    padding: 1rem;
-    color: var(--color-secondary);
-  }
-  .card__title {
-    margin: 0 0 0.5rem 0;
-    color: var(--color-accent-2);
-    transition: color 0.25s ease;
-  }
-  .card:hover .card__title { color: var(--color-accent-1); }
-  .card__text { margin: 0; line-height: 1.4; color: var(--text-primary); }
+@media (min-width: 768px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
 
+.card {
+  background: var(--bg-light);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] .card {
+  background-color: var(--color-accent-2);
+}
 
-/* ────────────────────── Lightbox Modal ────────────────────── */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.card__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  display: block; 
+  cursor: pointer;
+}
+
+.card__content {
+  padding: 1rem;
+  color: var(--color-secondary);
+}
+
+.card__title {
+  margin: 0 0 0.5rem 0;
+  color: var(--bg-dark);
+  transition: color 0.25s ease;
+}
+
+.card:hover .card__title { 
+  color: var(--color-accent-1); 
+}
+
+.card__text { 
+  margin: 0; 
+  line-height: 1.4; 
+  color: var(--text-primary); 
+}
+
+/* ────────────────────── LIGHTBOX MODAL ────────────────────── */
 .lightbox {
-  position:fixed; inset:0;
-  background:rgba(0,0,0,.85);
-  display:flex; align-items:center; justify-content:center;
-  visibility:hidden; opacity:0;
-  transition:.3s ease;
-  z-index:1000;
+  position: fixed; 
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  visibility: hidden; 
+  opacity: 0;
+  transition: .3s ease;
+  z-index: 1000;
 }
-.lightbox.active { visibility:visible; opacity:1; }
+
+.lightbox.active { 
+  visibility: visible; 
+  opacity: 1; 
+}
+
 .lightbox img {
-  max-width:90%; 
-  max-height:80vh; 
-  border-radius:6px;          /* ← NEW – rounded corners */
-  box-shadow:0 8px 16px rgba(0,0,0,.3);
+  max-width: 90%; 
+  max-height: 80vh; 
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,.3);
 }
+
 .lightbox .close-btn {
-  position:absolute; top:20px; right:30px;
-  font-size:2.5rem; color:#fff; cursor:pointer;
-  z-index:1100;
+  position: absolute; 
+  top: 20px; 
+  right: 30px;
+  font-size: 2.5rem; 
+  color: #fff; 
+  cursor: pointer;
+  z-index: 1100;
 }
 
-/* ────────────────────── More Section  ────────────────────── */
+/* ────────────────────── MORE SECTION ────────────────────── */
 .more {
-  margin-bottom:1.5rem;
-  line-height:1.6; }
-.more h2 {
-  margin-top:.75rem;
-  margin-bottom:.75rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  line-height: 1.6;
+  
 }
 
-/* ────────────────────── About Me Section  ────────────────────── */
-.about {
-  margin-top:2.25rem;
-  margin-bottom:3rem;
-  max-width:800px;
-  line-height:1.6;
+.more h2 {
+  margin-top: .75rem;
+  margin-bottom: .75rem;
 }
+/* ────────────────────── ABOUT ME wrapper────────────────────── */
+.about-wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+/* ────────────────────── ABOUT ME SECTION ────────────────────── */
+.about {
+  margin-top: 2.25rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
 .about h2 {
-  margin-top:.75rem;
-  margin-bottom:.75rem;
-  color: var(--text-primary);
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+  color: var(--heading-dark);
 }
 
 [data-theme="dark"] .about h2 {
-  color:var(--heading-dark);
+  color: var(--heading-light);
 }
-
-/* ────────────────────── Drop‑cap for About Me ────────────────────── */
+/* ────────────────────── DROP-CAP FOR ABOUT ME ────────────────────── */
 .about p:first-of-type::first-letter {
-  /* Float so the rest of the text wraps around it */
   float: left;
-color:var(--color-accent-2);
-  /* Size – 4‑5 rem gives a nice dramatic effect */
+  color: var(--color-accent-2);
   font-size: 5rem;
-
-  /* Extra line‑height so the letter is vertically centered */
   line-height: 0.8;
-
-  /* Space between the drop‑cap and the following text */
   margin-right: 0.1em;
-
-  /* Optional: add a subtle shadow for depth */
   text-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
-/* Optional: adjust on smaller screens */
 @media (max-width: 600px) {
   .about p:first-of-type::first-letter {
-    font-size: 3.5rem;   /* scale down for mobile */
+    font-size: 3.5rem;
   }
 }
 
-/* ────────────────────── Dark‑mode override ────────────────────── */
+/* ────────────────────── DARK-MODE OVERRIDES ────────────────────── */
 body[data-theme="dark"] {
   background-color: var(--bg-dark);
   color: var(--text-primary-dk);
 }
 
-/* Text elements – dark mode overrides */
 body[data-theme="dark"] h1,
 body[data-theme="dark"] p,
 body[data-theme="dark"] nav a {
   color: var(--text-primary-dk);
 }
 
-/* Keep inner wrappers on the same background as body */
 body[data-theme="dark"] .wrapper,
 body[data-theme="dark"] main,
-body[data-theme="dark"] footer { background-color: inherit; }
+body[data-theme="dark"] footer { 
+  background-color: inherit; 
+}
 
-/* ────────────────────── Footer (identical to Header) ────────────────────── */
+/* ────────────────────── FOOTER (Full-Bleed) ────────────────────── */
 .footer {
-  margin-top: 1rem;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
   gap: 1rem;
-  
-  /* Change display to grid */
   display: grid;
-  /* 3 columns: 60px ends, and the center takes up all remaining space */
   grid-template-columns: 60px 1fr 60px; 
+  
+  /* Full-bleed */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
-/* Base styles for the side sections */
 .footer-left,
 .footer-right {
-  height: 55px; /* Matches your background size height */
+  height: 55px;
   background-repeat: no-repeat;
   background-size: auto 55px;
 }
 
-/* Assign the specific SVG backgrounds and positions */
 .footer-left {
-  background-image: url('meta/firs.svg'); /* Replace with your left SVG if different */
   background-position: left -3.2rem bottom -5px;
 }
 
 .footer-right {
-  background-image: url('meta/firs.svg');
   background-position: right -3.2rem bottom -5px;
 }
 
-/* Center section for your main text/content */
 .footer-main {
   height: 60px;
   display: flex;
@@ -505,17 +607,7 @@ body[data-theme="dark"] footer { background-color: inherit; }
   justify-content: center;
 }
 
-/* Dark Theme Adjustments */
 [data-theme="dark"] .footer {
   background: var(--menu-bg-dark);
   box-shadow: 0 -5px rgba(255, 255, 255, 0.1);
-}
-
-/* If the SVGs need to change or reload in dark mode, do it here */
-[data-theme="dark"] .footer-left {
-  background-image: url('meta/firs.svg');
-}
-
-[data-theme="dark"] .footer-right {
-  background-image: url('meta/firs.svg');
 }
