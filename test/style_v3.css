@@ -37,17 +37,22 @@ html, body {
 .container-light {
     background-color: var(--menu-bg-light);
     transition: background-color 0.3s ease;
-      padding: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 [data-theme="dark"] .container-light {
   background: var(--menu-bg-dark);
   transition: background-color 0.2s ease-out;
 }
-.container-2 {
-    background-color: var(--bg-light);
-    transition: background-color 0.3s ease;
-      padding: 2rem;
+/* ────────────────────── ABOUT ME wrapper────────────────────── */
+.inline-wrapper {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 1.5rem;
 }
+
 .container-menu-bar {
     background-color: var(--menu-bg-light);
     transition: background-color 0.2s ease;
@@ -74,6 +79,7 @@ html {
   padding: 1.4rem 2rem;
   display: flex;
   justify-content: flex-end;
+  margin-inline: auto;
   align-items: center;
   position: relative;
   transition: background-color 0.2s ease-out;
@@ -219,9 +225,7 @@ a:hover {
   color: var(--links);
   text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
 }
-[data-theme="dark"] a {
-  color: var(--links-dark);
-}
+
 
 /* ────────────────────── HERO SECTION (Full-Bleed Fix) ────────────────────── */
 .hero {
@@ -311,8 +315,6 @@ a:hover {
 /* ────────────────────── FEATURED WORK SECTION ────────────────────── */
 .featured {
   line-height: 1.6;
-  max-width: var(--max-width);
-  margin-inline: auto;
 }
 
 .featured h2 {
@@ -452,12 +454,12 @@ body[data-theme="dark"] .gallery-toggle {
 
 .card__title {
   margin: 0 0 0.5rem 0;
-  color: var(--bg-dark);
+  color: var(--color-accent-1); 
   transition: color 0.25s ease;
 }
 
 .card:hover .card__title { 
-  color: var(--color-accent-1); 
+  color: var(--bg-dark);
 }
 
 .card__text { 
@@ -513,11 +515,6 @@ body[data-theme="dark"] .gallery-toggle {
 .more h2 {
   margin-top: .75rem;
   margin-bottom: .75rem;
-}
-/* ────────────────────── ABOUT ME wrapper────────────────────── */
-.about-wrapper {
-  max-width: var(--max-width);
-  margin-inline: auto;
 }
 
 /* ────────────────────── ABOUT ME SECTION ────────────────────── */
