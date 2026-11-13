@@ -589,40 +589,33 @@ body[data-theme="dark"] footer {
   background-color: inherit; 
 }
 
-/* ────────────────────── FOOTER (Full-Bleed) ────────────────────── */
+/* ────────────────────── FOOTER ────────────────────── */
 .footer {
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
-  gap: 1rem;
-  display: grid;
-  grid-template-columns: 60px 1fr 60px; 
-  
-  /* Full-bleed */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  color: var(--text-primary);
+  padding-block: 2.5rem;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.footer-left,
-.footer-right {
-  height: 55px;
-  background-repeat: no-repeat;
-  background-size: auto 55px;
+.footer__title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
-
-.footer-left {
-  background-position: left -3.2rem bottom -5px;
+[data-theme="dark"] .footer__title {
+  color: var(--text-primary-dk);
 }
-
-.footer-right {
-  background-position: right -3.2rem bottom -5px;
-}
-
-.footer-main {
-  height: 60px;
+.footer__links {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer__copyright {
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  transition: color 0.3s ease;
 }
 
 [data-theme="dark"] .footer {
