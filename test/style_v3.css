@@ -12,7 +12,7 @@
     --menu-bg-dark      : #1e293b;
     --heading-light     : #f1f5f9;
     --heading-dark      : #0f172a;
-    --links             : #475569;
+    --links             : #9ca3af;
     --links-dark        : #abafb6;
   /* Layout Widths */
     --max-width: 106.25rem; /* ~1700px */
@@ -75,7 +75,7 @@ html {
 /* ────────────────────── MENU BAR (Sticky + Full-Bleed) ────────────────────── */
 
 .menu-bar {
-  background: var(--menu-bg-light);
+  background-color: var(--menu-bg-light);
   padding: 0rem 2rem;
   height: 4.5rem;
   display: flex;
@@ -85,12 +85,19 @@ html {
   position: relative;
   transition: background-color 0.2s ease-out;
   max-width: var(--max-width);
-
+  background-image: url('meta/stormlike_logo_color.svg');
+  background-repeat: no-repeat;
+  background-position: 2rem center;
+  background-size: auto 70%;
 }
 
 [data-theme="dark"] .menu-bar {
   background: var(--menu-bg-dark);
   transition: background-color 0.2s ease-out;
+  background-image: url('meta/stormlike_logo_color_dark.svg');
+  background-repeat: no-repeat;
+  background-position: 2rem center;
+  background-size: auto 70%;
 }
 
 /* ────────────────────── iPhone Style Toggle ────────────────────── */
@@ -226,7 +233,6 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: var(--links);
   text-shadow: 0.4px 0 0 currentColor, -0.4px 0 0 currentColor;
 }
 
@@ -297,7 +303,7 @@ a:hover {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--text-primary-dk);
   border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 9999px;
   background: transparent;
@@ -307,7 +313,7 @@ a:hover {
 
 .hero__cta:hover {
   background-color: rgba(255, 255, 255, 0.15);
-  border-color: #ffffff;
+  border-color: var(--text-primary-dk);
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
