@@ -441,7 +441,7 @@ body[data-theme="dark"] .gallery-toggle {
 }
 
 @media (min-width: 768px) {
-  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .cards-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 .card {
@@ -463,7 +463,7 @@ body[data-theme="dark"] .gallery-toggle {
 .card__img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/4;
   display: block; 
   cursor: pointer;
 }
@@ -627,5 +627,4 @@ body[data-theme="dark"] footer {
 
 [data-theme="dark"] .footer {
   background: var(--menu-bg-dark);
-  box-shadow: 0 -5px rgba(255, 255, 255, 0.1);
 }
