@@ -589,6 +589,60 @@ body[data-theme="dark"] footer {
   background-color: inherit; 
 }
 
+/* ============================================
+   GEAR SECTION
+   ============================================ */
+.gear {
+  padding-block: 6rem;
+  transition: background-color 0.3s ease;
+}
+
+.gear__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+}
+
+.gear-card {
+  border: 1px solid var(--color-accent-2);
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gear-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.gear-card__icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.gear-card__title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.gear-list {
+  list-style: none;
+  font-size: 0.9375rem;
+  padding: 0;
+}
+
+.gear-list li {
+  padding-block: 0.25rem;
+  border-bottom: 1px dashed var(--color-accent-2);
+  transition: border-color 0.3s ease;
+}
+
+.gear-list li:last-child {
+  border-bottom: none;
+}
+
 /* ────────────────────── FOOTER ────────────────────── */
 .footer {
   color: var(--text-primary);
