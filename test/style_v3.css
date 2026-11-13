@@ -76,7 +76,8 @@ html {
 
 .menu-bar {
   background: var(--menu-bg-light);
-  padding: 1.4rem 2rem;
+  padding: 0rem 2rem;
+  height: 4.5rem;
   display: flex;
   justify-content: flex-end;
   margin-inline: auto;
@@ -213,7 +214,10 @@ body[data-theme="dark"] .dropdown-menu a {
 }
 
 .dropdown-menu a:hover {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.10);
+}
+body[data-theme="dark"] .dropdown-menu a:hover{
+    background-color: rgba(0, 0, 0, 0.45);
 }
 
 /* ────────────────────── LINKS & GLOBAL TEXT ────────────────────── */
@@ -242,6 +246,17 @@ a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #1a2a1a;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.25); /* Adjust 0.35 to make it lighter or subtler */
+  z-index: 1;
+}
+[data-theme="dark"] .hero::before {
+  background-color: transparent;
 }
 
 .hero__content {
