@@ -593,7 +593,7 @@ body[data-theme="dark"] footer {
    GEAR SECTION
    ============================================ */
 .gear {
-  padding-block: 6rem;
+  padding-block: 3rem;
   transition: background-color 0.3s ease;
 }
 
